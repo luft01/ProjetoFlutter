@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_flutter/Model/Store.dart';
 import 'package:provider/provider.dart';
 import 'package:projeto_flutter/Controller/bank.dart';
+import 'package:projeto_flutter/repositories/shoes_db.dart';
 
 class ShoesList extends StatefulWidget {
   const ShoesList({Key? key}) : super(key: key);
@@ -13,14 +14,13 @@ class ShoesList extends StatefulWidget {
 class _ShoesListState extends State<ShoesList> {
   final String texto = Store.login;
   bool loading = true;
-
+  Map<int, List<String>> mapteste = Shoesdb.mapList;
   String? testestring = '';
 
   int itens = 10;
 
-  @override
   String codigo = 'not';
-  void _Enviar() {
+  void _enviar() {
     (context).read<Bank>().cardProductAllGet();
     Navigator.pushReplacementNamed(context, "/info",
         arguments: {"nome": codigo});
@@ -28,10 +28,6 @@ class _ShoesListState extends State<ShoesList> {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = TextButton.styleFrom(
-        foregroundColor: Theme.of(context).colorScheme.onPrimary);
-/*     String _buttonText = "Click";
-    int intens = 10; */
     return (Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue[900],
@@ -43,7 +39,7 @@ class _ShoesListState extends State<ShoesList> {
                 child: Row(children: [
                   TextButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamed('/login');
+                      //Navigator.of(context).pushNamed('/login');
                     },
                     child: Container(
                       height: 40,
@@ -65,19 +61,14 @@ class _ShoesListState extends State<ShoesList> {
                   top: BorderSide(
                       color: Color.fromARGB(255, 7, 7, 7), width: 3.0))),
           child: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: Colors.blue[900],
               unselectedItemColor: Colors.white,
-              currentIndex: 0,
-              backgroundColor: Colors.transparent,
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.store, color: Colors.white),
                   label: "Home",
                   backgroundColor: Color.fromARGB(0, 255, 255, 255),
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person, color: Colors.white),
-                  label: "Dados",
-                  backgroundColor: Color.fromARGB(0, 241, 240, 240),
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.shopping_cart, color: Colors.white),
@@ -166,7 +157,7 @@ class _ShoesListState extends State<ShoesList> {
                                   setState(() {
                                     codigo = 'Nike';
                                   }),
-                                  _Enviar()
+                                  _enviar()
                                 },
                                 style: TextButton.styleFrom(
                                   foregroundColor: Colors.white,
@@ -197,22 +188,24 @@ class _ShoesListState extends State<ShoesList> {
               ]),
               Row(children: [
                 Padding(
-                    padding: EdgeInsets.only(left: 35, bottom: 30, top: 10),
+                    padding:
+                        const EdgeInsets.only(left: 35, bottom: 30, top: 10),
                     child: Container(
                       width: 165,
                       height: 172,
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 104, 101, 101)
+                          color: const Color.fromARGB(255, 104, 101, 101)
                               .withOpacity(0.2),
                           border:
                               Border.all(color: Colors.black.withOpacity(0.4)),
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10))),
                       child: Column(children: [
-                        Container(
+                        SizedBox(
                           width: 163,
                           height: 170,
                           child: RotationTransition(
-                            turns: AlwaysStoppedAnimation(20 / 360),
+                            turns: const AlwaysStoppedAnimation(20 / 360),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image.network(
@@ -224,7 +217,7 @@ class _ShoesListState extends State<ShoesList> {
                     )),
                 Center(
                     child: Padding(
-                        padding: EdgeInsets.only(left: 40, bottom: 20),
+                        padding: const EdgeInsets.only(left: 40, bottom: 20),
                         child: Column(
                           children: [
                             const Text('  NIKE  AIR1  ',
@@ -244,7 +237,7 @@ class _ShoesListState extends State<ShoesList> {
                                   setState(() {
                                     codigo = 'Nike Air';
                                   }),
-                                  _Enviar()
+                                  _enviar()
                                 },
                                 style: TextButton.styleFrom(
                                   foregroundColor: Colors.white,
@@ -269,22 +262,24 @@ class _ShoesListState extends State<ShoesList> {
               ]),
               Row(children: [
                 Padding(
-                    padding: EdgeInsets.only(left: 35, bottom: 30, top: 10),
+                    padding:
+                        const EdgeInsets.only(left: 35, bottom: 30, top: 10),
                     child: Container(
                       width: 165,
                       height: 172,
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 104, 101, 101)
+                          color: const Color.fromARGB(255, 104, 101, 101)
                               .withOpacity(0.2),
                           border:
                               Border.all(color: Colors.black.withOpacity(0.4)),
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10))),
                       child: Column(children: [
-                        Container(
+                        SizedBox(
                           width: 163,
                           height: 170,
                           child: RotationTransition(
-                            turns: AlwaysStoppedAnimation(20 / 360),
+                            turns: const AlwaysStoppedAnimation(20 / 360),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image.network(
@@ -296,7 +291,7 @@ class _ShoesListState extends State<ShoesList> {
                     )),
                 Center(
                     child: Padding(
-                        padding: EdgeInsets.only(left: 30, bottom: 20),
+                        padding: const EdgeInsets.only(left: 30, bottom: 20),
                         child: Column(
                           children: [
                             const Text('ADIDAS HEAVY',
@@ -342,22 +337,24 @@ class _ShoesListState extends State<ShoesList> {
               ]),
               Row(children: [
                 Padding(
-                    padding: EdgeInsets.only(left: 35, bottom: 30, top: 10),
+                    padding:
+                        const EdgeInsets.only(left: 35, bottom: 30, top: 10),
                     child: Container(
                       width: 165,
                       height: 172,
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 104, 101, 101)
+                          color: const Color.fromARGB(255, 104, 101, 101)
                               .withOpacity(0.2),
                           border:
                               Border.all(color: Colors.black.withOpacity(0.4)),
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10))),
                       child: Column(children: [
-                        Container(
+                        SizedBox(
                           width: 163,
                           height: 170,
                           child: RotationTransition(
-                            turns: AlwaysStoppedAnimation(20 / 360),
+                            turns: const AlwaysStoppedAnimation(20 / 360),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image.network(
@@ -369,13 +366,13 @@ class _ShoesListState extends State<ShoesList> {
                     )),
                 Center(
                     child: Padding(
-                        padding: EdgeInsets.only(left: 40, bottom: 20),
+                        padding: const EdgeInsets.only(left: 40, bottom: 20),
                         child: Column(
                           children: [
-                            Text('ADIDAS BASIC',
+                            const Text('ADIDAS BASIC',
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 22)),
-                            Text('R\$ 229.00',
+                            const Text('R\$ 229.00',
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 22)),
                             Container(
@@ -395,8 +392,8 @@ class _ShoesListState extends State<ShoesList> {
                         borderRadius: BorderRadius.circular(30.0),
                       ), */
                                 ),
-                                child: Row(children: [
-                                  const Icon(
+                                child: Row(children: const [
+                                  Icon(
                                     Icons.info,
                                     size: 19.0,
                                   ),
@@ -415,26 +412,27 @@ class _ShoesListState extends State<ShoesList> {
               ]),
               Row(children: [
                 Padding(
-                    padding: EdgeInsets.only(left: 35, bottom: 30, top: 10),
+                    padding:
+                        const EdgeInsets.only(left: 35, bottom: 30, top: 10),
                     child: Container(
                       width: 165,
                       height: 172,
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 104, 101, 101)
+                          color: const Color.fromARGB(255, 104, 101, 101)
                               .withOpacity(0.2),
                           border:
                               Border.all(color: Colors.black.withOpacity(0.4)),
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10))),
                       child: Column(children: [
-                        Container(
+                        SizedBox(
                           width: 163,
                           height: 170,
                           child: RotationTransition(
-                            turns: AlwaysStoppedAnimation(20 / 360),
+                            turns: const AlwaysStoppedAnimation(20 / 360),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20),
-                              child: Image.network(
-                                  'https://www.webrun.com.br/wp-content/uploads/2022/09/TEMPLATE-mizuno.png'),
+                              child: Image.network('${mapteste[1]![2]}'),
                             ),
                           ),
                         ),
@@ -445,10 +443,10 @@ class _ShoesListState extends State<ShoesList> {
                         padding: const EdgeInsets.only(left: 40, bottom: 20),
                         child: Column(
                           children: [
-                            const Text('MIZUNO WAVE ',
-                                style: TextStyle(
+                            Text('${mapteste[1]![0]} ',
+                                style: const TextStyle(
                                     color: Colors.black, fontSize: 22)),
-                            const Text('R\$ 799.00',
+                            Text('R\$ ${mapteste[1]![1]}',
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 22)),
                             Container(
@@ -462,7 +460,7 @@ class _ShoesListState extends State<ShoesList> {
                                   setState(() {
                                     codigo = 'Mizuno';
                                   }),
-                                  _Enviar()
+                                  _enviar()
                                 },
                                 style: TextButton.styleFrom(
                                   foregroundColor: Colors.white,

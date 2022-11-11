@@ -8,15 +8,13 @@ class ProductReg extends StatefulWidget {
   State<ProductReg> createState() => _ProductRegState();
 }
 
-final Dados = FirebaseFirestore.instance.collection("pedidos");
-
 String? dados = '';
 
 Future dadoBanco(item, item2, item3) async {
   await {
     dados = item3,
-    print(dados),
-    print('aqui estopi'),
+    /* print(dados),
+    print('aqui estopi'), */
     FirebaseFirestore.instance.collection("pedidos").doc(dados).set({
       "Nome": item,
       "Desc": item2,
@@ -39,11 +37,11 @@ class _ProductRegState extends State<ProductReg> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Product"),
-          leading: Icon(Icons.add),
+          title: const Text("Product"),
+          leading: const Icon(Icons.add),
           actions: <Widget>[
             Padding(
-                padding: EdgeInsets.only(right: 25),
+                padding: const EdgeInsets.only(right: 25),
                 child: Row(children: [
                   TextButton(
                     onPressed: () {
@@ -57,13 +55,13 @@ class _ProductRegState extends State<ProductReg> {
 
         //body
         body: Container(
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: const BoxDecoration(color: Colors.white),
           child: ListView(children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     width: 130,
                     height: 130,
                     child: Image.network(
@@ -77,12 +75,12 @@ class _ProductRegState extends State<ProductReg> {
                   TextField(
                     controller: controlerTeste,
                     keyboardType: TextInputType.text,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                     decoration: InputDecoration(
-                      labelStyle: TextStyle(color: Colors.black),
+                      labelStyle: const TextStyle(color: Colors.black),
                       labelText: 'Name',
                       enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.grey,
                           ),
                           borderRadius: BorderRadius.circular(10)),
@@ -95,7 +93,7 @@ class _ProductRegState extends State<ProductReg> {
                           10.0,
                         ),
                       ),
-                      icon: new Icon(Icons.production_quantity_limits,
+                      icon: const Icon(Icons.production_quantity_limits,
                           color: Color.fromARGB(255, 7, 7, 7)),
                       fillColor: Colors.transparent,
                       filled: true,
@@ -107,12 +105,12 @@ class _ProductRegState extends State<ProductReg> {
                   TextField(
                     controller: controlerP,
                     keyboardType: TextInputType.text,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                     decoration: InputDecoration(
-                      labelStyle: TextStyle(color: Colors.black),
+                      labelStyle: const TextStyle(color: Colors.black),
                       labelText: 'Description',
                       enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.grey,
                           ),
                           borderRadius: BorderRadius.circular(10)),
@@ -125,7 +123,7 @@ class _ProductRegState extends State<ProductReg> {
                           10.0,
                         ),
                       ),
-                      icon: new Icon(Icons.description,
+                      icon: const Icon(Icons.description,
                           color: Color.fromARGB(255, 5, 5, 5)),
                       fillColor: Colors.transparent,
                       filled: true,
@@ -137,12 +135,12 @@ class _ProductRegState extends State<ProductReg> {
                   TextField(
                     controller: controler2,
                     keyboardType: TextInputType.number,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                     decoration: InputDecoration(
-                      labelStyle: TextStyle(color: Colors.black),
+                      labelStyle: const TextStyle(color: Colors.black),
                       labelText: 'Quantity',
                       enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.grey,
                           ),
                           borderRadius: BorderRadius.circular(10)),
@@ -155,7 +153,7 @@ class _ProductRegState extends State<ProductReg> {
                           10.0,
                         ),
                       ),
-                      icon: new Icon(Icons.numbers_outlined,
+                      icon: const Icon(Icons.numbers_outlined,
                           color: Color.fromARGB(255, 7, 7, 7)),
                       fillColor: Colors.transparent,
                       filled: true,
@@ -167,12 +165,12 @@ class _ProductRegState extends State<ProductReg> {
                   TextField(
                     controller: controler3,
                     keyboardType: TextInputType.text,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                     decoration: InputDecoration(
-                      labelStyle: TextStyle(color: Colors.black),
+                      labelStyle: const TextStyle(color: Colors.black),
                       labelText: 'URl Image',
                       enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.grey,
                           ),
                           borderRadius: BorderRadius.circular(10)),
@@ -185,7 +183,7 @@ class _ProductRegState extends State<ProductReg> {
                           10.0,
                         ),
                       ),
-                      icon: new Icon(Icons.link,
+                      icon: const Icon(Icons.link,
                           color: Color.fromARGB(255, 7, 7, 7)),
                       fillColor: Colors.transparent,
                       filled: true,
@@ -203,16 +201,16 @@ class _ProductRegState extends State<ProductReg> {
                     ),
                     child: TextButton(
                         style: TextButton.styleFrom(
-                          side: BorderSide(
+                          side: const BorderSide(
                               width: 1.0, color: Color.fromARGB(255, 5, 5, 5)),
-                          primary: Colors.white,
-                          shadowColor: Color.fromARGB(255, 255, 255, 255),
+                          foregroundColor: Colors.white,
+                          shadowColor: const Color.fromARGB(255, 255, 255, 255),
                           elevation: 20,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           "Confirm",
                           style: TextStyle(
                             color: Colors.black,

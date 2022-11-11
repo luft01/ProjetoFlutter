@@ -22,11 +22,14 @@ class _CarouselState extends State<Carousel> {
     "https://www.freeiconspng.com/thumbs/shoes-png/green-asics-running-shoes-png-image-4.png", */
     /*  "https://image.goat.com/transform/v1/attachments/product_template_pictures/images/071/445/308/original/719082_00.png.png?width=750", */
     "https://cdnv2.moovin.com.br/genko/imagens/produtos/lista/tenis-puma-flyer-beta-377082-01-2c3820d99c24866d1e24c5ba07f9e049.png",
+    "https://www.pngplay.com/wp-content/uploads/6/Adidas-Shoes-Icon-Transparent-PNG.png",
+    "https://sneakerbardetroit.com/wp-content/uploads/2020/06/Nike-Air-Force-1-Low-White-University-Red-CK7663-102-Release-Date.png",
   ];
   final imagesPromo = [
-    'https://freepngimg.com/thumb/running%20shoes/10-running-shoes-png-image-thumb.png',
-    'https://www.thenextsole.com/storage/images/742CMA0026147.png',
-    'https://freepngimg.com/thumb/categories/1498.png',
+    'https://www.webrun.com.br/wp-content/uploads/2022/09/TEMPLATE-mizuno.png',
+    'https://cdnv2.moovin.com.br/genko/imagens/produtos/lista/tenis-puma-flyer-beta-377082-01-2c3820d99c24866d1e24c5ba07f9e049.png',
+    'https://sneakerbardetroit.com/wp-content/uploads/2020/06/Nike-Air-Force-1-Low-White-University-Red-CK7663-102-Release-Date.png',
+    ''
   ];
 
   @override
@@ -34,11 +37,11 @@ class _CarouselState extends State<Carousel> {
     return (Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue[900],
-          title: Text("ARISTORE"),
+          title: const Text("ARISTORE"),
           centerTitle: true,
           actions: <Widget>[
             Padding(
-                padding: EdgeInsets.only(right: 25),
+                padding: const EdgeInsets.only(right: 25),
                 child: Row(children: [
                   TextButton(
                     onPressed: () {
@@ -105,7 +108,7 @@ class _CarouselState extends State<Carousel> {
             color: Colors.white70,
             child: ListView(children: [
               Padding(
-                padding: EdgeInsets.only(top: 15, bottom: 20),
+                padding: const EdgeInsets.only(top: 15, bottom: 20),
                 child: Container(
                   width: (double.infinity),
                   height: 140,
@@ -116,9 +119,9 @@ class _CarouselState extends State<Carousel> {
                             blurRadius: 10,
                             spreadRadius: 5,
                             color: Colors.black.withOpacity(0.6),
-                            offset: Offset(1, 10))
+                            offset: const Offset(1, 10))
                       ],
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
                         colors: [
@@ -130,7 +133,7 @@ class _CarouselState extends State<Carousel> {
                       )),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           'Aproveite a Black Friday',
                           style: TextStyle(
@@ -161,7 +164,7 @@ class _CarouselState extends State<Carousel> {
                   autoPlay: true,
                   //viewportFraction: 1,
                   //enlargeCenterPage: true,
-                  autoPlayInterval: Duration(seconds: 2),
+                  autoPlayInterval: const Duration(seconds: 2),
                 ),
                 itemCount: images.length,
                 itemBuilder: (context, index, realIndex) {
@@ -169,11 +172,11 @@ class _CarouselState extends State<Carousel> {
                   return buildImage(urlImage, index);
                 },
               )),
-              Center(
+              const Center(
                   child: Text('Promoções',
                       style: TextStyle(color: Colors.black, fontSize: 26))),
               Padding(
-                  padding: EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 20),
                   child: Column(children: [
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       Column(children: [
@@ -186,19 +189,20 @@ class _CarouselState extends State<Carousel> {
                           height: 140,
                           /* alignment: Alignment.topLeft, */
                           child: Padding(
-                              padding: EdgeInsets.only(left: 1),
-                              child: Image.network(imagesPromo[0])),
+                              padding: const EdgeInsets.only(left: 1),
+                              child: Image.network(imagesPromo[1])),
                         ),
-                        Text('MAMA', style: TextStyle(color: Colors.black)),
-                        Text('De R\$ 799,00',
+                        const Text('MAMA',
+                            style: TextStyle(color: Colors.black)),
+                        const Text('De R\$ 799,00',
                             style: TextStyle(
                                 decoration: TextDecoration.lineThrough,
                                 color: Colors.black)),
-                        Text('Por R\$ 599,00',
+                        const Text('Por R\$ 599,00',
                             style: TextStyle(color: Colors.black))
                       ]),
                       Padding(
-                          padding: EdgeInsets.only(left: 40),
+                          padding: const EdgeInsets.only(left: 40),
                           child: Column(children: [
                             Container(
                               decoration: BoxDecoration(
@@ -209,21 +213,21 @@ class _CarouselState extends State<Carousel> {
                               height: 140,
                               /* alignment: Alignment.topLeft, */
                               child: Padding(
-                                  padding: EdgeInsets.only(left: 1),
-                                  child: Image.network(imagesPromo[1])),
+                                  padding: const EdgeInsets.only(left: 1),
+                                  child: Image.network(imagesPromo[0])),
                             ),
-                            Text('Lagartixa',
+                            const Text('Lagartixa',
                                 style: TextStyle(color: Colors.black)),
-                            Text('De R\$ 600,00',
+                            const Text('De R\$ 600,00',
                                 style: TextStyle(
                                     decoration: TextDecoration.lineThrough,
                                     color: Colors.black)),
-                            Text('De R\$ 400,00',
+                            const Text('De R\$ 400,00',
                                 style: TextStyle(color: Colors.black)),
                           ]))
                     ]),
                     Padding(
-                        padding: EdgeInsets.only(top: 20),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -237,27 +241,28 @@ class _CarouselState extends State<Carousel> {
                                   height: 140,
                                   /* alignment: Alignment.topLeft, */
                                   child: Padding(
-                                      padding: EdgeInsets.only(left: 1),
-                                      child: Image.network(imagesPromo[0])),
+                                      padding: const EdgeInsets.only(left: 1),
+                                      child: Image.network(imagesPromo[2])),
                                 ),
-                                Text('MAMA',
+                                const Text('MAMA',
                                     style: TextStyle(color: Colors.black)),
-                                Text('De R\$ 799,00',
+                                const Text('De R\$ 799,00',
                                     style: TextStyle(
                                         decoration: TextDecoration.lineThrough,
                                         color: Colors.black)),
-                                Text('Por R\$ 599,00',
+                                const Text('Por R\$ 599,00',
                                     style: TextStyle(color: Colors.black))
                               ]),
                               Padding(
-                                  padding: EdgeInsets.only(left: 40),
+                                  padding: const EdgeInsets.only(left: 40),
                                   child: Column(children: [
                                     InkWell(
                                       onTap: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => ShoesList(),
+                                            builder: (context) =>
+                                                const ShoesList(),
                                           ),
                                         );
                                       },
@@ -271,19 +276,20 @@ class _CarouselState extends State<Carousel> {
                                         height: 140,
                                         /* alignment: Alignment.topLeft, */
                                         child: Padding(
-                                            padding: EdgeInsets.only(left: 1),
+                                            padding:
+                                                const EdgeInsets.only(left: 1),
                                             child:
-                                                Image.network(imagesPromo[1])),
+                                                Image.network(imagesPromo[0])),
                                       ),
                                     ),
-                                    Text('Lagartixa',
+                                    const Text('Lagartixa',
                                         style: TextStyle(color: Colors.black)),
-                                    Text('De R\$ 600,00',
+                                    const Text('De R\$ 600,00',
                                         style: TextStyle(
                                             decoration:
                                                 TextDecoration.lineThrough,
                                             color: Colors.black)),
-                                    Text('De R\$ 400,00',
+                                    const Text('De R\$ 400,00',
                                         style: TextStyle(color: Colors.black)),
                                   ]))
                             ]))
@@ -292,21 +298,22 @@ class _CarouselState extends State<Carousel> {
   }
 
   Widget buildImage(String urlImage, int index) => Container(
-      margin: EdgeInsets.symmetric(horizontal: 12),
+      margin: const EdgeInsets.symmetric(horizontal: 12),
       color: Colors.transparent,
       child: Column(
         children: [
-          Text('Shoes X', style: TextStyle(color: Colors.black, fontSize: 22)),
+          const Text('Shoes X',
+              style: TextStyle(color: Colors.black, fontSize: 22)),
           Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black, width: 1),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                     blurRadius: 10,
                     color: Color.fromARGB(188, 13, 72, 161),
                     offset: Offset(1, 3))
               ],
-              color: Color.fromARGB(41, 170, 167, 167),
+              color: const Color.fromARGB(41, 170, 167, 167),
               borderRadius: BorderRadius.circular(20),
             ),
             height: 200,

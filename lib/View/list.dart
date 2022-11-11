@@ -13,7 +13,7 @@ class ListS extends StatefulWidget {
 
 class _ListSState extends State<ListS> {
   final String texto = Store.login;
-  List<String> pricelist = [];
+  List<List<String>> pricelist = [];
   Map<int, List> testeobj = {};
   List<String> nike = [''];
   int i = 0;
@@ -21,6 +21,7 @@ class _ListSState extends State<ListS> {
   String? testestring = '';
   String? testestring1 = '';
   int itens = 10;
+  int contador = 0;
   String codigo = 'not';
   /* void _Enviar() {
     Navigator.pushReplacementNamed(context, "/infote",
@@ -36,17 +37,8 @@ class _ListSState extends State<ListS> {
   void testef() {
     (context).read<Bank>().pgn();
     setState(() {
-      nike = (context).read<Bank>().pgn();
-      listprice = (context).read<Bank>().pgp();
-      i = nike.length;
-      testeobj[0] = nike;
-      testeobj[1] = listprice;
-      testeobj.map((key, value) {
-        /* print('matriz');
-        print(value);
-        print(key); */
-        return MapEntry('($key)', value);
-      });
+      pricelist = (context).read<Bank>().pgn();
+      print(pricelist);
     });
 
     /* print('estou aqui');
@@ -508,7 +500,7 @@ class _ListSState extends State<ListS> {
               ]), */
               SliverList(
                 delegate: SliverChildListDelegate(
-                  nike
+                  listprice
                       .map(
                         (nikes) => Row(children: [
                           Padding(
@@ -562,13 +554,13 @@ class _ListSState extends State<ListS> {
                                         child: TextButton(
                                           onPressed: () => {},
                                           style: TextButton.styleFrom(
-                                            primary: Colors.white,
+                                            foregroundColor: Colors.white,
                                             shadowColor: Color.fromARGB(
                                                 255, 255, 255, 255),
                                             elevation: 5,
                                             /* shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
-                      ), */
+                        ), */
                                           ),
                                           child: Row(children: const [
                                             Icon(

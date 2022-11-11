@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_flutter/repositories/favoritos.dart';
 import 'package:provider/provider.dart';
 import 'package:projeto_flutter/Controller/bank.dart';
+import 'package:projeto_flutter/Model/shoes.dart';
+import 'package:projeto_flutter/repositories/shoes_db.dart';
 
 class InfoTeste extends StatefulWidget {
   const InfoTeste({Key? key}) : super(key: key);
@@ -13,6 +16,7 @@ class _InfoTesteState extends State<InfoTeste> {
   bool medidas = false;
   bool status = false;
   List<bool> testeStatus = [false, false, false, false, false];
+  int tamanho = 0;
   List<String> teste = [];
   List<String> tListbank = [];
   List<String> tListbank2 = [];
@@ -21,6 +25,8 @@ class _InfoTesteState extends State<InfoTeste> {
   int numbe = 0;
   String nome = '';
   Map data = {};
+
+  @override
   void initState() {
     super.initState();
     setState(() {
@@ -30,6 +36,7 @@ class _InfoTesteState extends State<InfoTeste> {
     testInit();
   }
 
+  @override
   void didChangeDependencies() {
     tListbank.clear();
     if (ModalRoute.of(context)?.settings.arguments == null) {
@@ -42,15 +49,12 @@ class _InfoTesteState extends State<InfoTeste> {
     }
     if (nome == 'Nike') {
       (context).read<Bank>().cardProductAll(nome);
-      print('aqui 1');
     } else if (nome == 'Mizuno') {
-      print('aqui 12');
       (context).read<Bank>().cardProductAll(nome);
     } else if (nome == 'Nike Air') {
-      print('aqui 3');
       (context).read<Bank>().cardProductAll(nome);
     }
-    print(nome);
+
     super.didChangeDependencies();
   }
 
@@ -58,17 +62,19 @@ class _InfoTesteState extends State<InfoTeste> {
     setState(() {
       tListbank = (context).read<Bank>().cardProductAllGet();
     });
-    print(tListbank);
   }
 
   void _nextCart() {
-    Navigator.pushReplacementNamed(context, "/cart", arguments: {"nome": nome});
+    if (tamanho == 0) {
+      tamanho = 0;
+    } else {
+      Navigator.pushReplacementNamed(context, "/cart",
+          arguments: {"nome": nome, "tamanho": tamanho});
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = TextButton.styleFrom(
-        backgroundColor: Theme.of(context).colorScheme.onPrimary);
 /*     String _buttonText = "Click";
     int intens = 10; */
     return (Scaffold(
@@ -82,8 +88,7 @@ class _InfoTesteState extends State<InfoTeste> {
                 child: Row(children: [
                   TextButton(
                     onPressed: () {
-                      //Navigator.of(context).pushNamed('/login');
-                      testInit();
+                      Navigator.of(context).pushNamed('/login');
                     },
                     child: Container(
                       height: 40,
@@ -111,36 +116,35 @@ class _InfoTesteState extends State<InfoTeste> {
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person, color: Colors.white),
-                  label: "Dados",
-                  backgroundColor: Color.fromARGB(0, 250, 248, 248),
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_basket, color: Colors.white),
-                  backgroundColor: Color.fromARGB(0, 250, 248, 248),
-                  label: "Produtos",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home, color: Colors.white),
-                  backgroundColor: Colors.transparent,
                   label: "Home",
+                  backgroundColor: Color.fromARGB(0, 250, 248, 248),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.local_mall, color: Colors.white),
+                  backgroundColor: Color.fromARGB(0, 250, 248, 248),
+                  label: "Produos",
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.feed, color: Colors.white),
                   backgroundColor: Colors.transparent,
                   label: "Feed",
                 ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.shopping_cart, color: Colors.white),
+                  backgroundColor: Colors.transparent,
+                  label: "Cart",
+                ),
               ],
               onTap: (int index) {
                 switch (index) {
                   case 0:
-                    Navigator.pushReplacementNamed(context, "/form",
-                        arguments: {"nome": 'texto'});
+                    Navigator.of(context).pushNamed('/home');
                     break;
                   case 1:
                     Navigator.of(context).pushNamed('/shoes');
                     break;
                   case 2:
-                    Navigator.of(context).pushNamed('/home');
+                    Navigator.of(context).pushNamed('/cart');
                     break;
                   case 3:
                     Navigator.of(context).pushNamed('/feed');
@@ -149,7 +153,26 @@ class _InfoTesteState extends State<InfoTeste> {
               }),
         ),
         body: tListbank.isEmpty
-            ? Container()
+            ? Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                decoration: const BoxDecoration(color: Colors.white),
+                child: Center(
+                    child: Container(
+                        width: 150,
+                        height: 60,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.blue[900]),
+                        child: TextButton(
+                          onPressed: (() {
+                            testInit();
+                          }),
+                          child: const Text(
+                            'Atualizar',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ))))
             : Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
@@ -251,8 +274,9 @@ class _InfoTesteState extends State<InfoTeste> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(50),
                                         color: testeStatus[0] == true
-                                            ? Colors.green
-                                            : Color.fromARGB(255, 65, 62, 62),
+                                            ? Colors.blue[900]
+                                            : const Color.fromARGB(
+                                                255, 65, 62, 62),
                                       ),
                                       child: TextButton(
                                           child: Text(
@@ -261,10 +285,33 @@ class _InfoTesteState extends State<InfoTeste> {
                                                   color: Colors.white,
                                                   fontSize: 15)),
                                           onPressed: () => {
-                                                setState(() {
-                                                  testeStatus[0] =
-                                                      !testeStatus[0];
-                                                })
+                                                for (int i = 0; i < 5; i++)
+                                                  {
+                                                    if (i != 0)
+                                                      {
+                                                        if (testeStatus[i] ==
+                                                            true)
+                                                          {
+                                                            setState(() {
+                                                              testeStatus[i] =
+                                                                  false;
+                                                            })
+                                                          }
+                                                      }
+                                                    else
+                                                      {
+                                                        setState(() {
+                                                          testeStatus[0] =
+                                                              !testeStatus[0];
+                                                          if (testeStatus[0] ==
+                                                              true) {
+                                                            tamanho = 39;
+                                                          } else {
+                                                            tamanho = 0;
+                                                          }
+                                                        })
+                                                      }
+                                                  }
                                               })),
                                 ),
                                 Padding(
@@ -275,7 +322,7 @@ class _InfoTesteState extends State<InfoTeste> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(50),
                                         color: testeStatus[1] == true
-                                            ? Colors.green
+                                            ? Colors.blue[900]
                                             : const Color.fromARGB(
                                                 255, 65, 62, 62),
                                       ),
@@ -286,14 +333,32 @@ class _InfoTesteState extends State<InfoTeste> {
                                                   color: Colors.white,
                                                   fontSize: 15)),
                                           onPressed: () => {
-                                                if (testeStatus[0] == true)
-                                                  {print('error')}
-                                                else
+                                                for (int i = 0; i < 5; i++)
                                                   {
-                                                    setState(() {
-                                                      testeStatus[1] =
-                                                          !testeStatus[1];
-                                                    })
+                                                    if (i != 1)
+                                                      {
+                                                        if (testeStatus[i] ==
+                                                            true)
+                                                          {
+                                                            setState(() {
+                                                              testeStatus[i] =
+                                                                  false;
+                                                            })
+                                                          }
+                                                      }
+                                                    else
+                                                      {
+                                                        setState(() {
+                                                          testeStatus[1] =
+                                                              !testeStatus[1];
+                                                          if (testeStatus[1] ==
+                                                              true) {
+                                                            tamanho = 40;
+                                                          } else {
+                                                            tamanho = 0;
+                                                          }
+                                                        })
+                                                      }
                                                   }
                                               })),
                                 ),
@@ -317,84 +382,91 @@ class _InfoTesteState extends State<InfoTeste> {
                                                   fontSize: 15)),
                                           onPressed: () => {
                                                 numbe = 2,
-                                                for (int i = 0; i < 4; i++)
+                                                for (int i = 0; i < 5; i++)
                                                   {
-                                                    if (i == numbe)
+                                                    if (i != 2)
                                                       {
-                                                        numbe++,
-                                                        print('numbe'),
-                                                        print(numbe),
                                                         if (testeStatus[i] ==
                                                             true)
                                                           {
-                                                            print('error : '),
-                                                            print(
-                                                                testeStatus[i]),
-                                                          }
-                                                        else
-                                                          {
                                                             setState(() {
-                                                              testeStatus[2] =
-                                                                  !testeStatus[
-                                                                      2];
+                                                              testeStatus[i] =
+                                                                  false;
                                                             })
                                                           }
                                                       }
                                                     else
                                                       {
-                                                        numbe = i,
-                                                        print('numbe'),
-                                                        print(numbe),
-                                                        if (testeStatus[i] ==
-                                                            true)
-                                                          {
-                                                            print('error : '),
-                                                            print(
-                                                                testeStatus[i]),
-                                                            print(i)
+                                                        setState(() {
+                                                          testeStatus[2] =
+                                                              !testeStatus[2];
+                                                          if (testeStatus[2] ==
+                                                              true) {
+                                                            tamanho = 41;
+                                                          } else {
+                                                            tamanho = 0;
                                                           }
-                                                        else
-                                                          {
-                                                            setState(() {
-                                                              testeStatus[2] =
-                                                                  !testeStatus[
-                                                                      2];
-                                                            })
-                                                          }
+                                                        })
                                                       }
                                                   }
                                               })),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
-                                  child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: testeStatus[3] == true
-                                            ? Colors.green
-                                            : const Color.fromARGB(
-                                                255, 65, 62, 62),
-                                      ),
-                                      child: TextButton(
-                                          child: Text(
-                                              medidas == false ? '42' : '10',
-                                              style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 15)),
-                                          onPressed: () => {
-                                                if (testeStatus[0] == true)
-                                                  {print('error')}
-                                                else
-                                                  {
-                                                    setState(() {
-                                                      testeStatus[3] =
-                                                          !testeStatus[3];
-                                                    })
-                                                  }
-                                              })),
-                                ),
+                                    padding: const EdgeInsets.only(left: 10.0),
+                                    child: Column(children: [
+                                      Container(
+                                          width: 50,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            color: testeStatus[3] == true
+                                                ? Colors.blue[900]
+                                                : const Color.fromARGB(
+                                                    255, 65, 62, 62),
+                                          ),
+                                          child: TextButton(
+                                              child: Text(
+                                                  medidas == false
+                                                      ? '42'
+                                                      : '10',
+                                                  style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 15)),
+                                              onPressed: () => {
+                                                    for (int i = 0; i < 5; i++)
+                                                      {
+                                                        if (i != 3)
+                                                          {
+                                                            if (testeStatus[
+                                                                    i] ==
+                                                                true)
+                                                              {
+                                                                setState(() {
+                                                                  testeStatus[
+                                                                          i] =
+                                                                      false;
+                                                                })
+                                                              }
+                                                          }
+                                                        else
+                                                          {
+                                                            setState(() {
+                                                              testeStatus[3] =
+                                                                  !testeStatus[
+                                                                      3];
+                                                              if (testeStatus[
+                                                                      3] ==
+                                                                  true) {
+                                                                tamanho = 42;
+                                                              } else {
+                                                                tamanho = 0;
+                                                              }
+                                                            })
+                                                          }
+                                                      }
+                                                  })),
+                                    ])),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 10.0),
                                   child: Container(
@@ -403,25 +475,43 @@ class _InfoTesteState extends State<InfoTeste> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(50),
                                         color: testeStatus[4] == true
-                                            ? Colors.green
+                                            ? Colors.blue[900]
                                             : const Color.fromARGB(
                                                 255, 65, 62, 62),
                                       ),
                                       child: TextButton(
                                           child: Text(
-                                              medidas == false ? '43' : '15',
+                                              medidas == false ? '43' : '10.5',
                                               style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 15)),
                                           onPressed: () => {
-                                                if (testeStatus[0] == true)
-                                                  {print('error')}
-                                                else
+                                                for (int i = 0; i < 5; i++)
                                                   {
-                                                    setState(() {
-                                                      testeStatus[4] =
-                                                          !testeStatus[4];
-                                                    })
+                                                    if (i != 4)
+                                                      {
+                                                        if (testeStatus[i] ==
+                                                            true)
+                                                          {
+                                                            setState(() {
+                                                              testeStatus[i] =
+                                                                  false;
+                                                            })
+                                                          }
+                                                      }
+                                                    else
+                                                      {
+                                                        setState(() {
+                                                          testeStatus[4] =
+                                                              !testeStatus[4];
+                                                          if (testeStatus[3] ==
+                                                              true) {
+                                                            tamanho = 42;
+                                                          } else {
+                                                            tamanho = 0;
+                                                          }
+                                                        })
+                                                      }
                                                   }
                                               })),
                                 ),
@@ -445,17 +535,19 @@ class _InfoTesteState extends State<InfoTeste> {
                                       color: Colors.blue[900],
                                     ),
                                     child: TextButton(
-                                        child: const Text('Add cart',
+                                        child: const Text('Adicionar',
                                             style:
                                                 TextStyle(color: Colors.white)),
                                         onPressed: () => {_nextCart()})),
-                                TextButton(
+                                /* TextButton(
                                     child: const Icon(
                                       Icons.favorite,
                                       color: Colors.red,
                                       size: 32,
                                     ),
-                                    onPressed: () {})
+                                    onPressed: () {
+                                     
+                                    }) */
                               ]),
                         )
                       ]))

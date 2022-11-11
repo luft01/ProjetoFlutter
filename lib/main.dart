@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_flutter/Controller/bank.dart';
 import 'package:projeto_flutter/View/auth_check.dart';
 import 'package:projeto_flutter/View/home.dart';
-//import 'package:projeto_flutter/View/list.dart';
+import 'package:projeto_flutter/View/list.dart';
 import 'package:projeto_flutter/View/register.dart';
 import 'package:projeto_flutter/View/login.dart';
 import 'package:projeto_flutter/Controller/app.dart';
@@ -28,10 +28,6 @@ void main() async {
   );
 
   runApp(
-    /* ChangeNotifierProvider(
-    create: (_) => Bank(),
-    child: AppWight(),
-  ) */
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthService()),
@@ -65,13 +61,13 @@ class AppWight extends StatelessWidget {
             //'/home': (context) => HomePage(),
             '/form': (context) => const FormPage(),
             '/register': (context) => const RegisterPage(),
-            '/shoes': (context) => const ShoesList(),
+            //'/shoes': (context) => const ListS(),
             '/info': (context) => const InfoTeste(),
             '/cart': (context) => const Cart(),
             '/feed': (context) => const Feed(),
             '/auth_check': (context) => const AuthCheck(),
             '/product': (context) => const ProductReg(),
-            //'/shoes': (context) => ShoesList(),
+            '/shoes': (context) => ShoesList(),
             '/home': (context) => const Carousel()
           },
         );

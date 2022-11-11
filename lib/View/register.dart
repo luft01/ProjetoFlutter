@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:projeto_flutter/services/auth_service.dart';
-import 'package:projeto_flutter/Controller/bank.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -13,12 +12,12 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   var isLoading = false;
-
   final formKey = GlobalKey<FormState>();
   final email = TextEditingController();
   final senha = TextEditingController();
   final nome = TextEditingController();
-
+  bool status = false;
+  int aux = 0;
   final usua = FirebaseFirestore.instance.collection("Usuario");
 
   registrar() async {
@@ -29,25 +28,34 @@ class _RegisterPageState extends State<RegisterPage> {
       setState(() => isLoading = false);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message)));
+      aux = 1;
+    }
+  }
+
+  logando() {
+    if (aux == 2) {
+      Navigator.of(context).pushNamed('/home');
+    } else {
+      print('error');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style =
-        TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
+    final ButtonStyle style = TextButton.styleFrom(
+        foregroundColor: Theme.of(context).colorScheme.onPrimary);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register"),
-        leading: Icon(Icons.app_registration),
+        title: const Text("Register"),
+        leading: const Icon(Icons.app_registration),
         actions: <Widget>[
           Padding(
-              padding: EdgeInsets.only(right: 25),
+              padding: const EdgeInsets.only(right: 25),
               child: Row(children: [
                 TextButton(
                   style: style,
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/login');
+                    Navigator.of(context).pushNamed('/shoes');
                   },
                   child: const Text('Login'),
                 ),
@@ -55,7 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient: RadialGradient(
           colors: [Color(0xff000000), Color(0xff085795)],
           center: Alignment.center,
@@ -68,8 +76,8 @@ class _RegisterPageState extends State<RegisterPage> {
             key: formKey,
             child: Column(
               children: <Widget>[
-                Text(
-                  "RegisterPage ",
+                const Text(
+                  "Tela de Registro ",
                   style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
@@ -87,7 +95,17 @@ class _RegisterPageState extends State<RegisterPage> {
                     ],
                   ),
                 ),
-                //styling
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: SizedBox(
+                    width: 130,
+                    height: 130,
+                    child: Image.network(
+                      'https://uxwing.com/wp-content/themes/uxwing/download/editing-user-action/new-registration-icon.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
                 SizedBox(
                   height: MediaQuery.of(context).size.width * 0.1,
                 ),
@@ -101,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         10.0,
                       ),
                     ),
-                    icon: new Icon(Icons.login,
+                    icon: const Icon(Icons.login,
                         color: Color.fromARGB(255, 159, 161, 167)),
                     fillColor: Colors.transparent,
                     filled: true,
@@ -155,7 +173,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ), */
                 SizedBox(
-                  height: MediaQuery.of(context).size.width * 0.06,
+                  height: MediaQuery.of(context).size.width * 0.1,
                 ),
                 TextFormField(
                   controller: senha,
@@ -166,7 +184,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         10.0,
                       ),
                     ),
-                    icon: new Icon(Icons.lock, color: Color(0xff224597)),
+                    icon: const Icon(Icons.lock, color: Color(0xff224597)),
                     fillColor: Colors.transparent,
                     filled: true,
                   ),
@@ -181,33 +199,34 @@ class _RegisterPageState extends State<RegisterPage> {
                   },
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.width * 0.06,
+                  height: MediaQuery.of(context).size.width * 0.1,
                 ),
                 Container(
-                  width: 140,
+                  width: 160,
                   height: 50,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.transparent),
                   child: TextButton(
                       style: TextButton.styleFrom(
-                        side: BorderSide(width: 1.0, color: Colors.white),
-                        primary: Colors.white,
-                        shadowColor: Color.fromARGB(255, 255, 255, 255),
+                        side: const BorderSide(width: 1.0, color: Colors.white),
+                        foregroundColor: Colors.white,
+                        shadowColor: const Color.fromARGB(255, 255, 255, 255),
                         elevation: 20,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         "Enter",
                         style: TextStyle(
                           fontSize: 24.0,
                         ),
                       ),
                       onPressed: () {
-                        registrar();
-                        Navigator.of(context).pushNamed('/home');
+                        if (formKey.currentState!.validate()) {
+                          registrar();
+                        }
                       }),
                 ),
               ],

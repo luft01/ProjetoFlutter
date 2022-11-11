@@ -29,8 +29,6 @@ class _LoginPageState extends State<LoginPage> {
   bool exibir = false;
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = TextButton.styleFrom(
-        backgroundColor: Theme.of(context).colorScheme.onPrimary);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Login"),
@@ -65,17 +63,39 @@ class _LoginPageState extends State<LoginPage> {
             key: formKey,
             child: Column(
               children: <Widget>[
-                SizedBox(
-                  width: 130,
-                  height: 130,
-                  child: Image.network(
-                    'https://cdn-icons-png.flaticon.com/512/5087/5087579.png',
-                    fit: BoxFit.cover,
+                const Text(
+                  "Tela de Login ",
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                    shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(4.0, 7.0),
+                        blurRadius: 3.0,
+                        color: Color.fromARGB(213, 233, 238, 231),
+                      ),
+                      Shadow(
+                        offset: Offset(4.0, 7.0),
+                        blurRadius: 8.0,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: SizedBox(
+                    width: 130,
+                    height: 130,
+                    child: Image.network(
+                      'http://cdn.onlinewebfonts.com/svg/img_201469.png',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 //styling
                 SizedBox(
-                  height: MediaQuery.of(context).size.width * 0.01,
+                  height: MediaQuery.of(context).size.width * 0.1,
                 ),
                 /* Material(
                 elevation: 18,

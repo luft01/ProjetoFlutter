@@ -10,15 +10,14 @@ class Feed extends StatefulWidget {
 }
 
 class _FeedState extends State<Feed> {
+  @override
   void initState() {
     super.initState();
-    /* list_bank = (context).read<Bank>().feedall(); */
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _setText();
   }
 
   final titleController = TextEditingController();
@@ -26,9 +25,8 @@ class _FeedState extends State<Feed> {
   int i = 0;
   String textbank = '';
   bool status = false;
-  List<String> list_bank = ['a'];
-  List<String> list_bank2 = ['b'];
-  final List<String> _user = ['Anonimo'];
+  List<String> listbank = ['a'];
+  List<String> listbank2 = ['b'];
   String list = '';
   int count = 0;
   List<String> cardValues = [];
@@ -36,31 +34,10 @@ class _FeedState extends State<Feed> {
 
   void _setText() {
     setState(() {
-      /* status = !status; */
-      /* list_bank.clear(); */
-      /* list_bank = (context).read<Bank>().feedall(); */
       cardValues.clear();
-      list_bank = (context).read<Bank>().feedall();
-      /* (context).read<Bank>().feedall();
-      list_bank = (context).read<Bank>().feedall(); */
-      increment();
+      listbank = (context).read<Bank>().feedall();
 
-      /* for (int i = 0; i < list_bank.length; i++) {
-        if (list_bank2[i] == lista[i]) {
-          print('iguais');
-        } else {
-          print('aqui ou');
-          setState(() {
-            list_bank.clear();
-            list_bank = (context).read<Bank>().feedall();
-            list_bank.add((context).read<Bank>().feedall().toString());
-            lista = list_bank;
-            increment();
-          });
-        }
-        
-      } */
-      /* print(list_bank2); */
+      increment();
     });
   }
 
@@ -68,15 +45,14 @@ class _FeedState extends State<Feed> {
     text = titleController.text;
     (context).read<Bank>().fr(text);
     _setText();
-    /* increment(); */
     titleController.text = '';
   }
 
-  void increment() => setState(() => cardValues.addAll(list_bank));
+  void increment() => setState(() => cardValues.addAll(listbank));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(108, 239, 239, 241),
+      backgroundColor: const Color.fromARGB(108, 239, 239, 241),
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
         title: const Text('Feed'),
@@ -115,31 +91,31 @@ class _FeedState extends State<Feed> {
               backgroundColor: Colors.blue[900],
               items: [
                 const BottomNavigationBarItem(
-                  icon: Icon(Icons.person, color: Colors.white),
-                  label: "Dados",
+                  icon: Icon(Icons.store, color: Colors.white),
+                  label: "Home",
                   backgroundColor: Color.fromARGB(0, 255, 255, 255),
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(Icons.shopping_basket, color: Colors.white),
+                  icon: const Icon(Icons.local_mall, color: Colors.white),
                   backgroundColor: Colors.white.withOpacity(0.1),
                   label: "Produtos",
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(Icons.home, color: Colors.white),
+                  icon: const Icon(Icons.shopping_cart, color: Colors.white),
                   backgroundColor: Colors.white.withOpacity(0.1),
-                  label: "Home",
+                  label: "Cart",
                 ),
               ],
               onTap: (int index) {
                 switch (index) {
                   case 0:
-                    Navigator.pushNamed(context, "/product");
+                    Navigator.pushNamed(context, "/home");
                     break;
                   case 1:
                     Navigator.of(context).pushNamed('/shoes');
                     break;
                   case 2:
-                    Navigator.of(context).pushNamed('/home');
+                    Navigator.of(context).pushNamed('/cart');
                     break;
                 }
               })),
@@ -150,7 +126,7 @@ class _FeedState extends State<Feed> {
               cardValues
                   .map((e) => Card(
                       color: Colors.blue[700],
-                      child: SizedBox(height: 60, child: Text(' ${e}'))))
+                      child: SizedBox(height: 60, child: Text(' $e'))))
                   .toList(),
             ),
           ),

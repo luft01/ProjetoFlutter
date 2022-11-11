@@ -9,18 +9,18 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
-  void Timer() {
+  void timer() {
     Navigator.pushReplacementNamed(context, '/register');
   }
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(milliseconds: 1000), () {
-      Timer();
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      timer();
     });
     return Scaffold(
         backgroundColor: Colors.blue[900],
-        body: Center(
+        body: const Center(
           child: SpinKitCubeGrid(
             color: Colors.white,
             size: 90.0,

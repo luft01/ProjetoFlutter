@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:projeto_flutter/Model/shoes.dart';
+import 'package:projeto_flutter/repositories/shoes_db.dart';
 
 final dados = FirebaseFirestore.instance.collection("usu");
 final feed = FirebaseFirestore.instance.collection("Prod");
@@ -11,14 +12,21 @@ String nomeb = '';
 List<String> listret = [];
 List<String> listTelaList = [];
 List<String> listprice = [];
+List<String> listid = [];
+List<Shoes> shoesBank = [];
 int count = 0;
 
 class Bank extends ChangeNotifier {
   String nome = 'Juqueiras';
 
-  Bank() {
-    nome = nome;
-  }
+  /* Bank._();
+
+  static final Bank _instance = Bank._();
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  static FirebaseFirestore get() {
+    return Bank._instance._firestore;
+  } */
 
   void fr(cmm) {
     feeds.doc('feed07').set({
@@ -41,10 +49,14 @@ class Bank extends ChangeNotifier {
     });
   }
 
-  List<String> pgn() {
+  List<List<String>> pgn() {
+    openBankp();
+    return [listret, listprice, listid];
+  }
+  /* List<String> pgn() {
     openBankp();
     return listret;
-  }
+  } */
 
   List<String> pgp() {
     openBankp();
@@ -54,6 +66,7 @@ class Bank extends ChangeNotifier {
   void pgnn(nn) {
     feed.doc(nn).get().then((snapshot) {
       listret.add(snapshot.data()!['Nome']);
+      listid.add(snapshot.data()!['ID']);
     });
   }
 
@@ -117,4 +130,38 @@ class Bank extends ChangeNotifier {
   List<String> cardProductAllGet() {
     return listTelaList;
   }
+
+  //banc product with  Map
+  /* Future mapBankShoes() async {
+    final snap = await feed.get();
+    //for (var document in snapshot.docs) {
+    snap.docs.forEach((doc) {
+      /*  print('doc');
+      print(doc.id); */
+      String? nn = doc.id;
+      pgnn(nn);
+      pgpp(nn);
+    });
+  }
+
+  List<List<String>> pgn() {
+    openBankp();
+    return [listret, listprice, listid];
+  }
+  /* List<String> pgn() {
+    openBankp();
+    return listret;
+  } */
+
+  List<String> pgp() {
+    openBankp();
+    return listprice;
+  }
+
+  void pgnn(nn) {
+    feed.doc(nn).get().then((snapshot) {
+      listret.add(snapshot.data()!['Nome']);
+      listid.add(snapshot.data()!['ID']);
+    });
+  } */
 }
