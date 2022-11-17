@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_flutter/Controller/bank.dart';
 import 'package:provider/provider.dart';
+import 'package:projeto_flutter/services/auth_service.dart';
 
 class Feed extends StatefulWidget {
   const Feed({Key? key}) : super(key: key);
@@ -63,8 +64,8 @@ class _FeedState extends State<Feed> {
                 children: [
                   TextButton(
                     onPressed: () {
-                      /* Navigator.of(context).pushNamed('/login'); */
-                      _setText();
+                      context.read<AuthService>().logout();
+                      Navigator.of(context).pushNamed('/login');
                     },
                     child: Container(
                       height: 40,
@@ -142,7 +143,10 @@ class _FeedState extends State<Feed> {
                   child: Column(children: [
                     status == true
                         ? TextField(
+                            style: TextStyle(color: Colors.black),
                             decoration: const InputDecoration(
+                                /* filled: true,
+                                fillColor: Colors.black, */
                                 labelText: 'Comment',
                                 labelStyle: TextStyle(color: Colors.black)),
                             controller: titleController,

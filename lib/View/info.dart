@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_flutter/repositories/favoritos.dart';
 import 'package:provider/provider.dart';
 import 'package:projeto_flutter/Controller/bank.dart';
-import 'package:projeto_flutter/Model/shoes.dart';
-import 'package:projeto_flutter/repositories/shoes_db.dart';
+import 'package:projeto_flutter/services/auth_service.dart';
 
 class InfoTeste extends StatefulWidget {
   const InfoTeste({Key? key}) : super(key: key);
@@ -88,6 +86,7 @@ class _InfoTesteState extends State<InfoTeste> {
                 child: Row(children: [
                   TextButton(
                     onPressed: () {
+                      context.read<AuthService>().logout();
                       Navigator.of(context).pushNamed('/login');
                     },
                     child: Container(
@@ -539,15 +538,17 @@ class _InfoTesteState extends State<InfoTeste> {
                                             style:
                                                 TextStyle(color: Colors.white)),
                                         onPressed: () => {_nextCart()})),
-                                /* TextButton(
+                                TextButton(
                                     child: const Icon(
                                       Icons.favorite,
                                       color: Colors.red,
                                       size: 32,
                                     ),
                                     onPressed: () {
-                                     
-                                    }) */
+                                      (context)
+                                          .read<Bank>()
+                                          .cartProduct(tListbank[3]);
+                                    })
                               ]),
                         )
                       ]))

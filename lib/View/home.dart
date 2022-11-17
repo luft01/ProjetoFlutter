@@ -3,6 +3,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:projeto_flutter/View/shoes_list.dart';
 import 'package:projeto_flutter/services/auth_service.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Carousel extends StatefulWidget {
   const Carousel({
@@ -14,6 +16,16 @@ class Carousel extends StatefulWidget {
 }
 
 class _CarouselState extends State<Carousel> {
+  loadData() async {
+    var url = Uri.parse('');
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      throw Exception('Erro ao carregar');
+    }
+  }
+
   final images = [
     /* "https://pngimg.com/uploads/running_shoes/running_shoes_PNG5816.png",
     "https://www.freepnglogos.com/uploads/shoes-png/running-shoes-png-transparent-running-shoes-images-40.png",

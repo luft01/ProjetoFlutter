@@ -48,6 +48,13 @@ class _CartState extends State<Cart> {
     super.didChangeDependencies();
   }
 
+  _finalizar() {
+    (context)
+        .read<Bank>()
+        .buyFinish(tListbank[0], double.parse(tListbank[1]) * quanti);
+    Navigator.pushReplacementNamed(context, '/home');
+  }
+
   void testInit() {
     setState(() {
       tListbank = (context).read<Bank>().cardProductAllGet();
@@ -307,7 +314,7 @@ class _CartState extends State<Cart> {
                                       child: const Text('Comprar',
                                           style:
                                               TextStyle(color: Colors.white)),
-                                      onPressed: () => {})),
+                                      onPressed: () => {_finalizar()})),
                             )),
                       ],
                     )))));

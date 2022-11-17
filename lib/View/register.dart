@@ -30,6 +30,12 @@ class _RegisterPageState extends State<RegisterPage> {
           .showSnackBar(SnackBar(content: Text(e.message)));
       aux = 1;
     }
+    if (aux == 1) {
+      aux = 0;
+    } else {
+      aux = 2;
+      logando();
+    }
   }
 
   logando() {
@@ -55,7 +61,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 TextButton(
                   style: style,
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/shoes');
+                    Navigator.of(context).pushNamed('/login');
                   },
                   child: const Text('Login'),
                 ),

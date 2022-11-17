@@ -6,8 +6,9 @@ import 'package:projeto_flutter/repositories/shoes_db.dart';
 final dados = FirebaseFirestore.instance.collection("usu");
 final feed = FirebaseFirestore.instance.collection("Prod");
 final feeds = FirebaseFirestore.instance.collection("Feed");
-/* final prod = FirebaseFirestore.instance.collection("Produto");
-final listSh = FirebaseFirestore.instance.collection("Produto"); */
+final buy = FirebaseFirestore.instance.collection("Compra");
+final like = FirebaseFirestore.instance.collection("favoritos");
+
 String nomeb = '';
 List<String> listret = [];
 List<String> listTelaList = [];
@@ -29,7 +30,7 @@ class Bank extends ChangeNotifier {
   } */
 
   void fr(cmm) {
-    feeds.doc('feed07').set({
+    feeds.add({
       "Nome": cmm,
     });
   }
@@ -117,6 +118,7 @@ class Bank extends ChangeNotifier {
       listTelaList.add(snapshot.data()!['Nome']);
       listTelaList.add(snapshot.data()!['Preco']);
       listTelaList.add(snapshot.data()!['Url']);
+      listTelaList.add(snapshot.data()!['ID']);
       /* print(listTelaList); */
     });
   }
@@ -131,37 +133,17 @@ class Bank extends ChangeNotifier {
     return listTelaList;
   }
 
-  //banc product with  Map
-  /* Future mapBankShoes() async {
-    final snap = await feed.get();
-    //for (var document in snapshot.docs) {
-    snap.docs.forEach((doc) {
-      /*  print('doc');
-      print(doc.id); */
-      String? nn = doc.id;
-      pgnn(nn);
-      pgpp(nn);
+  //banc for buy
+  void buyFinish(produto, total) {
+    buy.add({
+      'Produto': produto,
+      'Total': total,
     });
   }
 
-  List<List<String>> pgn() {
-    openBankp();
-    return [listret, listprice, listid];
-  }
-  /* List<String> pgn() {
-    openBankp();
-    return listret;
-  } */
-
-  List<String> pgp() {
-    openBankp();
-    return listprice;
-  }
-
-  void pgnn(nn) {
-    feed.doc(nn).get().then((snapshot) {
-      listret.add(snapshot.data()!['Nome']);
-      listid.add(snapshot.data()!['ID']);
+  void cartProduct(idProduto) {
+    like.add({
+      "ID": idProduto,
     });
-  } */
+  }
 }

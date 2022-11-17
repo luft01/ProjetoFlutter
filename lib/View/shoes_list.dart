@@ -3,6 +3,7 @@ import 'package:projeto_flutter/Model/Store.dart';
 import 'package:provider/provider.dart';
 import 'package:projeto_flutter/Controller/bank.dart';
 import 'package:projeto_flutter/repositories/shoes_db.dart';
+import 'package:projeto_flutter/services/auth_service.dart';
 
 class ShoesList extends StatefulWidget {
   const ShoesList({Key? key}) : super(key: key);
@@ -39,7 +40,8 @@ class _ShoesListState extends State<ShoesList> {
                 child: Row(children: [
                   TextButton(
                     onPressed: () {
-                      //Navigator.of(context).pushNamed('/login');
+                      context.read<AuthService>().logout();
+                      Navigator.of(context).pushNamed('/login');
                     },
                     child: Container(
                       height: 40,
