@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_flutter/Controller/bank.dart';
 import 'package:projeto_flutter/View/auth_check.dart';
 import 'package:projeto_flutter/View/home.dart';
-import 'package:projeto_flutter/View/list.dart';
+import 'package:projeto_flutter/View/useApi.dart';
 import 'package:projeto_flutter/View/register.dart';
 import 'package:projeto_flutter/View/login.dart';
 import 'package:projeto_flutter/Controller/app.dart';
@@ -17,8 +17,10 @@ import 'package:projeto_flutter/firebase_options.dart';
 import 'package:projeto_flutter/services/auth_service.dart';
 import 'package:provider/provider.dart';
 import 'package:projeto_flutter/View/shoes_list.dart';
-//import 'package:projeto_flutter/View/home.dart';
+import 'package:projeto_flutter/View/home.dart';
 import 'package:projeto_flutter/View/product_register.dart';
+import 'package:projeto_flutter/View/promo.dart';
+import 'package:projeto_flutter/View/info_tshirt.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,7 +70,10 @@ class AppWight extends StatelessWidget {
             '/auth_check': (context) => const AuthCheck(),
             '/product': (context) => const ProductReg(),
             '/shoes': (context) => ShoesList(),
-            '/home': (context) => const Carousel()
+            '/home': (context) => const Carousel(),
+            '/useapi': (context) => const CarouselT(),
+            '/promo': (context) => const Promo(),
+            '/info_tshirt': (context) => const Info_Tshirt(),
           },
         );
       },

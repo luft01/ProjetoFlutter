@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:projeto_flutter/View/shoes_list.dart';
 import 'package:projeto_flutter/services/auth_service.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class Carousel extends StatefulWidget {
-  const Carousel({
+class CarouselT extends StatefulWidget {
+  const CarouselT({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<Carousel> createState() => _CarouselState();
+  State<CarouselT> createState() => _CarouselTState();
 }
 
-class _CarouselState extends State<Carousel> {
+class _CarouselTState extends State<CarouselT> {
   loadData() async {
-    var url = Uri.parse('https://api.escuelajs.co/api/v1/products');
+    var url = Uri.parse('https://fakestoreapi.com/products/');
     var response = await http.get(url);
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
@@ -25,24 +23,6 @@ class _CarouselState extends State<Carousel> {
       throw Exception('Erro ao carregar');
     }
   }
-
-  final images = [
-    /* "https://pngimg.com/uploads/running_shoes/running_shoes_PNG5816.png",
-    "https://www.freepnglogos.com/uploads/shoes-png/running-shoes-png-transparent-running-shoes-images-40.png",
-    "https://www.pngall.com/wp-content/uploads/13/Nike-Shoes-Air-Max-PNG-File.png",
-    "https://freepngimg.com/thumb/shoes/27518-9-nike-shoes-file-thumb.png",
-    "https://www.freeiconspng.com/thumbs/shoes-png/green-asics-running-shoes-png-image-4.png", */
-    /*  "https://image.goat.com/transform/v1/attachments/product_template_pictures/images/071/445/308/original/719082_00.png.png?width=750", */
-    "https://cdnv2.moovin.com.br/genko/imagens/produtos/lista/tenis-puma-flyer-beta-377082-01-2c3820d99c24866d1e24c5ba07f9e049.png",
-    "https://www.pngplay.com/wp-content/uploads/6/Adidas-Shoes-Icon-Transparent-PNG.png",
-    "https://sneakerbardetroit.com/wp-content/uploads/2020/06/Nike-Air-Force-1-Low-White-University-Red-CK7663-102-Release-Date.png",
-  ];
-  final imagesPromo = [
-    'https://www.webrun.com.br/wp-content/uploads/2022/09/TEMPLATE-mizuno.png',
-    'https://cdnv2.moovin.com.br/genko/imagens/produtos/lista/tenis-puma-flyer-beta-377082-01-2c3820d99c24866d1e24c5ba07f9e049.png',
-    'https://sneakerbardetroit.com/wp-content/uploads/2020/06/Nike-Air-Force-1-Low-White-University-Red-CK7663-102-Release-Date.png',
-    ''
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -124,8 +104,8 @@ class _CarouselState extends State<Carousel> {
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
                     return ListTile(
-                      title: Text('${snapshot.data![index]['title']}'),
-                      subtitle: Text('${snapshot.data![index]['description']}'),
+                      title: Text('${snapshot.data![index]['nome']}'),
+                      subtitle: Text('${snapshot.data![index]['estoque']}'),
                     );
                   });
             } else if (snapshot.hasError) {
@@ -139,34 +119,4 @@ class _CarouselState extends State<Carousel> {
           })),
     ));
   }
-
-  Widget buildImage(String urlImage, int index) => Container(
-      margin: const EdgeInsets.symmetric(horizontal: 12),
-      color: Colors.transparent,
-      child: Column(
-        children: [
-          const Text('Shoes X',
-              style: TextStyle(color: Colors.black, fontSize: 22)),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 1),
-              boxShadow: const [
-                BoxShadow(
-                    blurRadius: 10,
-                    color: Color.fromARGB(188, 13, 72, 161),
-                    offset: Offset(1, 3))
-              ],
-              color: const Color.fromARGB(41, 170, 167, 167),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            height: 200,
-            width: 250,
-            child: Image.network(
-              /* height: 170, */
-              urlImage,
-              fit: BoxFit.fill,
-            ),
-          )
-        ],
-      ));
 }

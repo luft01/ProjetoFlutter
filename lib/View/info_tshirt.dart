@@ -3,74 +3,51 @@ import 'package:provider/provider.dart';
 import 'package:projeto_flutter/Controller/bank.dart';
 import 'package:projeto_flutter/services/auth_service.dart';
 
-class InfoTeste extends StatefulWidget {
-  const InfoTeste({Key? key}) : super(key: key);
+class Info_Tshirt extends StatefulWidget {
+  const Info_Tshirt({Key? key}) : super(key: key);
 
   @override
-  State<InfoTeste> createState() => _InfoTesteState();
+  State<Info_Tshirt> createState() => _Info_TshirtState();
 }
 
-class _InfoTesteState extends State<InfoTeste> {
+class _Info_TshirtState extends State<Info_Tshirt> {
   bool medidas = false;
   bool status = false;
   List<bool> testeStatus = [false, false, false, false, false];
   int tamanho = 0;
-  List<String> teste = [];
-  List<String> tListbank = [];
-  List<String> tListbank2 = [];
   bool loading = true;
   int itens = 10;
   int numbe = 0;
   int cod = 0;
-  String nome = '';
   Map data = {};
 
   @override
   void initState() {
     super.initState();
-    setState(() {
-      tListbank = (context).read<Bank>().cardProductAllGet();
-    });
-
-    testInit();
   }
 
   @override
   void didChangeDependencies() {
-    tListbank.clear();
     if (ModalRoute.of(context)?.settings.arguments == null) {
       data = {};
     } else {
       setState(() {
         data = ModalRoute.of(context)!.settings.arguments as Map;
-        nome = data["nome"];
+        cod = data["Codigo"];
       });
-    }
-    if (nome == 'Nike') {
-      (context).read<Bank>().cardProductAll(nome);
-    } else if (nome == 'Mizuno') {
-      (context).read<Bank>().cardProductAll(nome);
-    } else if (nome == 'Nike Air') {
-      (context).read<Bank>().cardProductAll(nome);
     }
 
     super.didChangeDependencies();
   }
 
-  void testInit() {
-    setState(() {
-      tListbank = (context).read<Bank>().cardProductAllGet();
-    });
-  }
-
-  void _nextCart() {
+/*   void _nextCart() {
     if (tamanho == 0) {
       tamanho = 0;
     } else {
       Navigator.pushReplacementNamed(context, "/cart",
           arguments: {"nome": nome, "tamanho": tamanho});
     }
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -152,7 +129,7 @@ class _InfoTesteState extends State<InfoTeste> {
                 }
               }),
         ),
-        body: tListbank.isEmpty
+        body: data.isEmpty
             ? Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
@@ -164,15 +141,7 @@ class _InfoTesteState extends State<InfoTeste> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
                             color: Colors.blue[900]),
-                        child: TextButton(
-                          onPressed: (() {
-                            testInit();
-                          }),
-                          child: const Text(
-                            'Atualizar',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                        ))))
+                        child: const Text('Algo deu errado'))))
             : Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
@@ -193,11 +162,11 @@ class _InfoTesteState extends State<InfoTeste> {
                         radius: 0.8,
                       )),
                       child: Column(children: [
-                        Text(
-                          tListbank[0],
-                          style: const TextStyle(fontSize: 28),
+                        const Text(
+                          'tListbank[0]',
+                          style: TextStyle(fontSize: 28),
                         ),
-                        Container(
+                        /* Container(
                           width: 190,
                           height: 170,
                           decoration: const BoxDecoration(
@@ -211,7 +180,7 @@ class _InfoTesteState extends State<InfoTeste> {
                             borderRadius: BorderRadius.circular(20),
                             child: Image.network(tListbank[2]),
                           ),
-                        ),
+                        ), */
                         const SizedBox(
                           height: 20,
                         ),
@@ -220,7 +189,7 @@ class _InfoTesteState extends State<InfoTeste> {
                           child: Row(
                             children: [
                               Text(
-                                'Preço : ${tListbank[1]}',
+                                'Preço : {tListbank[1]}',
                                 style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 25,
@@ -538,7 +507,7 @@ class _InfoTesteState extends State<InfoTeste> {
                                         child: const Text('Adicionar',
                                             style:
                                                 TextStyle(color: Colors.white)),
-                                        onPressed: () => {_nextCart()})),
+                                        onPressed: () => {/* _nextCart() */})),
                                 TextButton(
                                     child: const Icon(
                                       Icons.favorite,
@@ -546,9 +515,9 @@ class _InfoTesteState extends State<InfoTeste> {
                                       size: 32,
                                     ),
                                     onPressed: () {
-                                      (context)
+                                      /* (context)
                                           .read<Bank>()
-                                          .cartProduct(tListbank[3]);
+                                          .cartProduct(tListbank[3]); */
                                     })
                               ]),
                         )
