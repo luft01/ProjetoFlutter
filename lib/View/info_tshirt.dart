@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:projeto_flutter/Controller/bank.dart';
 import 'package:projeto_flutter/services/auth_service.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Info_Tshirt extends StatefulWidget {
   const Info_Tshirt({Key? key}) : super(key: key);
@@ -36,23 +38,23 @@ class _Info_TshirtState extends State<Info_Tshirt> {
         cod = data["Codigo"];
       });
     }
-
     super.didChangeDependencies();
   }
 
-/*   void _nextCart() {
-    if (tamanho == 0) {
-      tamanho = 0;
+  usoApi() async {
+    var url =
+        Uri.parse('https://my-json-server.typicode.com/luft01/senhaForte/db');
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
     } else {
-      Navigator.pushReplacementNamed(context, "/cart",
-          arguments: {"nome": nome, "tamanho": tamanho});
+      throw Exception('Erro ao carregar');
     }
-  } */
+  }
 
   @override
   Widget build(BuildContext context) {
-/*     String _buttonText = "Click";
-    int intens = 10; */
+    print(cod);
     return (Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue[900],
@@ -129,399 +131,76 @@ class _Info_TshirtState extends State<Info_Tshirt> {
                 }
               }),
         ),
-        body: data.isEmpty
+        body: /* data.isEmpty
             ? Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 decoration: const BoxDecoration(color: Colors.white),
                 child: Center(
-                    child: Container(
-                        width: 150,
-                        height: 60,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.blue[900]),
-                        child: const Text('Algo deu errado'))))
-            : Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                decoration: const BoxDecoration(color: Colors.white),
-                child: ListView(children: [
-                  Container(
-                      /* width: 300 ,
-        height: 300,  */
-                      decoration: const BoxDecoration(
-                          gradient: RadialGradient(
-                        colors: [
-                          Color.fromARGB(255, 40, 3, 252),
-                          Color.fromARGB(255, 40, 3, 252),
-                          Color.fromARGB(255, 252, 252, 252),
-                          Color.fromARGB(255, 252, 252, 252)
-                        ],
-                        center: Alignment.topCenter,
-                        radius: 0.8,
-                      )),
-                      child: Column(children: [
-                        const Text(
-                          'tListbank[0]',
-                          style: TextStyle(fontSize: 28),
-                        ),
-                        /* Container(
-                          width: 190,
-                          height: 170,
-                          decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                              color: Colors.black,
-                              width: 2,
-                            )),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.network(tListbank[2]),
-                          ),
-                        ), */
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 40.0, top: 100),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Preço : {tListbank[1]}',
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25,
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 10.0,
-                                      color: Colors.black,
-                                      offset: Offset(5.0, 5.0),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 70.0),
-                                child: Container(
-                                    width: 50,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      color:
-                                          const Color.fromARGB(255, 65, 62, 62),
-                                    ),
-                                    child: TextButton(
-                                        child: Text(
-                                          medidas == false ? 'US' : 'BR',
-                                          style: const TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.white),
-                                        ),
-                                        onPressed: () => {
-                                              setState(() {
-                                                medidas = !medidas;
-                                              })
-                                            })),
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                            padding: const EdgeInsets.only(left: 40.0),
-                            child: Row(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                      SizedBox(
+                          width: 200,
+                          height: 180,
+                          child: Image.network(
+                              "http://cdn.onlinewebfonts.com/svg/img_359860.png")),
+                      const Padding(
+                          padding: EdgeInsets.only(top: 20),
+                          child: Text('Algo de errado não está certo',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 28)))
+                    ])))
+            :  */
+            Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: const BoxDecoration(color: Colors.white),
+          child: FutureBuilder<dynamic>(
+              future: usoApi(),
+              builder: ((context, snapshot) {
+                if (snapshot.hasData) {
+                  return Ink(
+                      color: Colors.white,
+                      child: ListView.builder(
+                          itemCount: 1,
+                          itemBuilder: (context, index) {
+                            return Column(
                               children: [
-                                const Text('Tamanhos : ',
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 25)),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 20.0),
-                                  child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: testeStatus[0] == true
-                                            ? Colors.blue[900]
-                                            : const Color.fromARGB(
-                                                255, 65, 62, 62),
-                                      ),
-                                      child: TextButton(
-                                          child: Text(
-                                              medidas == false ? '39' : '7.5',
-                                              style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 15)),
-                                          onPressed: () => {
-                                                for (int i = 0; i < 5; i++)
-                                                  {
-                                                    if (i != 0)
-                                                      {
-                                                        if (testeStatus[i] ==
-                                                            true)
-                                                          {
-                                                            setState(() {
-                                                              testeStatus[i] =
-                                                                  false;
-                                                            })
-                                                          }
-                                                      }
-                                                    else
-                                                      {
-                                                        setState(() {
-                                                          testeStatus[0] =
-                                                              !testeStatus[0];
-                                                          if (testeStatus[0] ==
-                                                              true) {
-                                                            tamanho = 39;
-                                                          } else {
-                                                            tamanho = 0;
-                                                          }
-                                                        })
-                                                      }
-                                                  }
-                                              })),
+                                  padding: const EdgeInsets.only(top: 20),
+                                  child: Text(
+                                    '${snapshot.data!['produtos'][5]['nome']}',
+                                    style: const TextStyle(
+                                        color: Colors.black, fontSize: 28),
+                                  ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
-                                  child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: testeStatus[1] == true
-                                            ? Colors.blue[900]
-                                            : const Color.fromARGB(
-                                                255, 65, 62, 62),
-                                      ),
-                                      child: TextButton(
-                                          child: Text(
-                                              medidas == false ? '40' : '8.5',
-                                              style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 15)),
-                                          onPressed: () => {
-                                                for (int i = 0; i < 5; i++)
-                                                  {
-                                                    if (i != 1)
-                                                      {
-                                                        if (testeStatus[i] ==
-                                                            true)
-                                                          {
-                                                            setState(() {
-                                                              testeStatus[i] =
-                                                                  false;
-                                                            })
-                                                          }
-                                                      }
-                                                    else
-                                                      {
-                                                        setState(() {
-                                                          testeStatus[1] =
-                                                              !testeStatus[1];
-                                                          if (testeStatus[1] ==
-                                                              true) {
-                                                            tamanho = 40;
-                                                          } else {
-                                                            tamanho = 0;
-                                                          }
-                                                        })
-                                                      }
-                                                  }
-                                              })),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
-                                  child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: testeStatus[2] == true
-                                            ? Colors.blue[900]
-                                            : const Color.fromARGB(
-                                                255, 65, 62, 62),
-                                      ),
-                                      child: TextButton(
-                                          child: Text(
-                                              medidas == false ? '41' : '9.5',
-                                              style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 15)),
-                                          onPressed: () => {
-                                                numbe = 2,
-                                                for (int i = 0; i < 5; i++)
-                                                  {
-                                                    if (i != 2)
-                                                      {
-                                                        if (testeStatus[i] ==
-                                                            true)
-                                                          {
-                                                            setState(() {
-                                                              testeStatus[i] =
-                                                                  false;
-                                                            })
-                                                          }
-                                                      }
-                                                    else
-                                                      {
-                                                        setState(() {
-                                                          testeStatus[2] =
-                                                              !testeStatus[2];
-                                                          if (testeStatus[2] ==
-                                                              true) {
-                                                            tamanho = 41;
-                                                          } else {
-                                                            tamanho = 0;
-                                                          }
-                                                        })
-                                                      }
-                                                  }
-                                              })),
-                                ),
-                                Padding(
-                                    padding: const EdgeInsets.only(left: 10.0),
-                                    child: Column(children: [
-                                      Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: BoxDecoration(
+                                    padding: EdgeInsets.only(top: 30),
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.black,
+                                                width: 2.0),
                                             borderRadius:
-                                                BorderRadius.circular(50),
-                                            color: testeStatus[3] == true
-                                                ? Colors.blue[900]
-                                                : const Color.fromARGB(
-                                                    255, 65, 62, 62),
-                                          ),
-                                          child: TextButton(
-                                              child: Text(
-                                                  medidas == false
-                                                      ? '42'
-                                                      : '10',
-                                                  style: const TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 15)),
-                                              onPressed: () => {
-                                                    for (int i = 0; i < 5; i++)
-                                                      {
-                                                        if (i != 3)
-                                                          {
-                                                            if (testeStatus[
-                                                                    i] ==
-                                                                true)
-                                                              {
-                                                                setState(() {
-                                                                  testeStatus[
-                                                                          i] =
-                                                                      false;
-                                                                })
-                                                              }
-                                                          }
-                                                        else
-                                                          {
-                                                            setState(() {
-                                                              testeStatus[3] =
-                                                                  !testeStatus[
-                                                                      3];
-                                                              if (testeStatus[
-                                                                      3] ==
-                                                                  true) {
-                                                                tamanho = 42;
-                                                              } else {
-                                                                tamanho = 0;
-                                                              }
-                                                            })
-                                                          }
-                                                      }
-                                                  })),
-                                    ])),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
-                                  child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: testeStatus[4] == true
-                                            ? Colors.blue[900]
-                                            : const Color.fromARGB(
-                                                255, 65, 62, 62),
-                                      ),
-                                      child: TextButton(
-                                          child: Text(
-                                              medidas == false ? '43' : '10.5',
-                                              style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 15)),
-                                          onPressed: () => {
-                                                for (int i = 0; i < 5; i++)
-                                                  {
-                                                    if (i != 4)
-                                                      {
-                                                        if (testeStatus[i] ==
-                                                            true)
-                                                          {
-                                                            setState(() {
-                                                              testeStatus[i] =
-                                                                  false;
-                                                            })
-                                                          }
-                                                      }
-                                                    else
-                                                      {
-                                                        setState(() {
-                                                          testeStatus[4] =
-                                                              !testeStatus[4];
-                                                          if (testeStatus[3] ==
-                                                              true) {
-                                                            tamanho = 42;
-                                                          } else {
-                                                            tamanho = 0;
-                                                          }
-                                                        })
-                                                      }
-                                                  }
-                                              })),
-                                ),
+                                                const BorderRadius.all(
+                                                    Radius.circular(5))),
+                                        width: 240,
+                                        height: 200,
+                                        child: Image.network(snapshot
+                                            .data!['produtos'][5]['image'])))
                               ],
-                            )),
-                        /* Align(
-                alignment: AlignmentDirectional.center,
-                child: */
-
-                        Padding(
-                          padding: const EdgeInsets.only(top: 80),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    width: 120,
-                                    height: 60,
-                                    alignment: AlignmentDirectional.center,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                      color: Colors.blue[900],
-                                    ),
-                                    child: TextButton(
-                                        child: const Text('Adicionar',
-                                            style:
-                                                TextStyle(color: Colors.white)),
-                                        onPressed: () => {/* _nextCart() */})),
-                                TextButton(
-                                    child: const Icon(
-                                      Icons.favorite,
-                                      color: Colors.red,
-                                      size: 32,
-                                    ),
-                                    onPressed: () {
-                                      /* (context)
-                                          .read<Bank>()
-                                          .cartProduct(tListbank[3]); */
-                                    })
-                              ]),
-                        )
-                      ]))
-                ]))));
+                            );
+                          }));
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text('${snapshot.error}'),
+                  );
+                }
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              })),
+        )));
   }
 }

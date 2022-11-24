@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_flutter/Controller/bank.dart';
 import 'package:provider/provider.dart';
 import 'package:projeto_flutter/services/auth_service.dart';
+import 'package:projeto_flutter/View/fotos_page.dart';
 
 class Feed extends StatefulWidget {
   const Feed({Key? key}) : super(key: key);
@@ -185,7 +186,20 @@ class _FeedState extends State<Feed> {
                         ),
                         onPressed: () => _setText(),
                         child: const Text('Atualizar'),
-                      )
+                      ),
+                      /* ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                Colors.blue[900], // Background color
+                          ),
+                          onPressed: () => {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Carousel(),
+                                        fullscreenDialog: true)),
+                              },
+                          child: const Text('Foto')), */
                     ])
                   ])),
             ),
