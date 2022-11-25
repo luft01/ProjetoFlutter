@@ -69,7 +69,7 @@ class AppWight extends StatelessWidget {
             '/feed': (context) => const Feed(),
             '/auth_check': (context) => const AuthCheck(),
             '/product': (context) => const ProductReg(),
-            '/shoes': (context) => ShoesList(),
+            '/shoes': (context) => const ShoesList(),
             '/home': (context) => const Carousel(),
             '/useapi': (context) => const CarouselT(),
             '/promo': (context) => const Promo(),

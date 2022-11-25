@@ -187,7 +187,7 @@ class _FeedState extends State<Feed> {
                         onPressed: () => _setText(),
                         child: const Text('Atualizar'),
                       ),
-                      /* ElevatedButton(
+                      ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor:
                                 Colors.blue[900], // Background color
@@ -196,10 +196,10 @@ class _FeedState extends State<Feed> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Carousel(),
+                                        builder: (context) => FotosPage(),
                                         fullscreenDialog: true)),
                               },
-                          child: const Text('Foto')), */
+                          child: const Text('Foto')),
                     ])
                   ])),
             ),
