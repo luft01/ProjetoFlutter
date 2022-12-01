@@ -194,10 +194,12 @@ class _FeedState extends State<Feed> {
                           ),
                           onPressed: () => {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => FotosPage(),
-                                        fullscreenDialog: true)),
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => FotosPage(),
+                                    fullscreenDialog: true,
+                                  ),
+                                ),
                               },
                           child: const Text('Foto')),
                     ])

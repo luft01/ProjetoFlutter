@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.projeto_flutter">
-   
+    package="com.example.projeto_flutter" xmlns:tools="http://schemas.android.com/tools">
+     <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+
    <application
         android:label="projeto_flutter"
         android:name="${applicationName}"
@@ -27,6 +28,16 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.com.shekarmudaliyar.social_share"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
             <!-- <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"

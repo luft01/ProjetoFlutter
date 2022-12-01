@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:projeto_flutter/Controller/bank.dart';
 import 'package:projeto_flutter/services/auth_service.dart';
+import 'package:projeto_flutter/Model/shoes.dart';
+import 'package:social_share/social_share.dart';
 
 class InfoTeste extends StatefulWidget {
   const InfoTeste({Key? key}) : super(key: key);
@@ -72,6 +74,11 @@ class _InfoTesteState extends State<InfoTeste> {
     }
   }
 
+  compartilharPreco() {
+    SocialShare.shareWhatsapp(
+        'Confira o produto ${tListbank[0]} agora: ${(tListbank[1])} ');
+  }
+
   @override
   Widget build(BuildContext context) {
 /*     String _buttonText = "Click";
@@ -79,9 +86,10 @@ class _InfoTesteState extends State<InfoTeste> {
     return (Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue[900],
-          title: const Text("GaleriTeste"),
+          title: const Text("GaleriTeste2"),
           leading: const Icon(Icons.image),
           actions: <Widget>[
+            IconButton(onPressed: compartilharPreco, icon: Icon(Icons.share)),
             Padding(
                 padding: const EdgeInsets.only(right: 25),
                 child: Row(children: [
