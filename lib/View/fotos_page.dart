@@ -87,11 +87,11 @@ class _FotosPageState extends State<FotosPage> {
     }
   }
 
-  Future<void> saveImage(String img) async {
-    File file = File(img);
+  Future<void> saveImage(XFile file) async {
+    File f = File(file.path);
     try {
       String ref = 'image/img-${DateTime.now().toString()}.jpg';
-      await storage.ref(ref).putFile(file);
+      await storage.ref(ref).putFile(f);
     } on FirebaseException catch (e) {
       throw Exception('Erro no upload');
     }
@@ -180,7 +180,7 @@ class _FotosPageState extends State<FotosPage> {
       try {
         XFile file = await cameraController.takePicture();
         if (mounted) setState(() => imagem = file);
-        saveImage(imagem.toString());
+        saveImage(file);
       } on CameraException catch (e) {
         print(e.description);
       }

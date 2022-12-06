@@ -19,16 +19,22 @@ class _AuthCheckState extends State<AuthCheck> {
   @override
   void initState() {
     super.initState();
-    checkLocalAuth();
   }
 
-  checkLocalAuth() async {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  /* checkLocalAuth() async {
     final auth = context.read<LocalAuthService>();
     final isLocalAuthAvaliable = await auth.isBiometricAvaliable();
     isLocalAuthFailed.value = false;
 
     if (isLocalAuthAvaliable) {
       final authenticated = await auth.authenticate();
+    }
+    /* 
 
       if (!authenticated) {
         isLocalAuthFailed.value = true;
@@ -36,8 +42,8 @@ class _AuthCheckState extends State<AuthCheck> {
         if (!mounted) return;
         Navigator.of(context).pushReplacementNamed('/home');
       }
-    }
-  }
+    } */
+  } */
 
   @override
   Widget build(BuildContext context) {
