@@ -17,7 +17,7 @@ import 'package:projeto_flutter/firebase_options.dart';
 import 'package:projeto_flutter/services/auth_service.dart';
 import 'package:provider/provider.dart';
 import 'package:projeto_flutter/View/shoes_list.dart';
-import 'package:projeto_flutter/View/home.dart';
+//import 'package:projeto_flutter/View/home.dart';
 import 'package:projeto_flutter/View/product_register.dart';
 import 'package:projeto_flutter/View/promo.dart';
 import 'package:projeto_flutter/View/info_tshirt.dart';

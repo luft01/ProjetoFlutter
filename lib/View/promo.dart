@@ -111,8 +111,8 @@ class _PromoState extends State<Promo> {
             currentIndex: 1,
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Icons.shop, color: Colors.white),
-                label: "Products",
+                icon: Icon(Icons.store, color: Colors.white),
+                label: "Home",
                 backgroundColor: Color.fromARGB(0, 255, 255, 255),
               ),
               BottomNavigationBarItem(
@@ -129,7 +129,7 @@ class _PromoState extends State<Promo> {
             onTap: (int index) {
               switch (index) {
                 case 0:
-                  Navigator.of(context).pushNamed('/shoes');
+                  Navigator.of(context).pushNamed('/home');
                   break;
                 case 1:
                   Navigator.of(context).pushNamed('/cart');
@@ -176,7 +176,7 @@ class _PromoState extends State<Promo> {
                                             child: Image.network(
                                                 '${snapshot.data!['produtos'][index]['image']}')),
                                         Padding(
-                                            padding: EdgeInsets.only(left: 39),
+                                            padding: EdgeInsets.only(left: 25),
                                             child: Row(
                                               children: [
                                                 Text('Mais informações',

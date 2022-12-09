@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                 TextButton(
                   /* style: style, */
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/promo');
+                    Navigator.of(context).pushNamed('/register');
                   },
                   child: const Text('Register'),
                 ),

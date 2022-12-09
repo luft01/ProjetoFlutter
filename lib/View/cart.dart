@@ -181,8 +181,8 @@ class _CartState extends State<Cart> {
                           style: const TextStyle(fontSize: 28),
                         ),
                         SizedBox(
-                          width: 190,
-                          height: 170,
+                          width: 160,
+                          height: 140,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Image.network(tListbank[2]),
@@ -192,14 +192,14 @@ class _CartState extends State<Cart> {
                           height: 20,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 40.0, top: 30),
+                          padding: const EdgeInsets.only(left: 20.0, top: 30),
                           child: Row(
                             children: [
                               Text(
                                 'Valor Total :  ${(total = double.parse(tListbank[1]) * quanti).toString()}',
                                 style: const TextStyle(
                                   color: Colors.black,
-                                  fontSize: 25,
+                                  fontSize: 23,
                                   shadows: [
                                     Shadow(
                                       blurRadius: 10.0,
@@ -210,12 +210,12 @@ class _CartState extends State<Cart> {
                                 ),
                               ),
                               Padding(
-                                  padding: const EdgeInsets.only(left: 90.0),
+                                  padding: const EdgeInsets.only(left: 45.0),
                                   child: Container(
-                                    width: 50,
-                                    height: 50,
+                                    width: 45,
+                                    height: 40,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
+                                      borderRadius: BorderRadius.circular(15),
                                       color: Colors.blue[900],
                                     ),
                                     child: TextButton(
@@ -240,11 +240,11 @@ class _CartState extends State<Cart> {
                             Text(
                               'Quantidade : $quanti',
                               style: const TextStyle(
-                                  color: Colors.black, fontSize: 25),
+                                  color: Colors.black, fontSize: 23),
                             ),
                             Padding(
                                 padding:
-                                    const EdgeInsets.only(left: 30, right: 20),
+                                    const EdgeInsets.only(left: 20, right: 10),
                                 child: Container(
                                   width: 35,
                                   height: 35,
@@ -280,12 +280,12 @@ class _CartState extends State<Cart> {
                                   },
                                 )),
                             Padding(
-                                padding: const EdgeInsets.only(left: 58.0),
+                                padding: const EdgeInsets.only(left: 20.0),
                                 child: Container(
-                                    width: 50,
-                                    height: 50,
+                                    width: 45,
+                                    height: 40,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
+                                        borderRadius: BorderRadius.circular(15),
                                         color: Colors.blue[900]),
                                     child: TextButton(
                                         onPressed: (() {}),

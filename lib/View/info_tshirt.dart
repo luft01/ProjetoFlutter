@@ -94,7 +94,7 @@ class _Info_TshirtState extends State<Info_Tshirt> {
               unselectedItemColor: Colors.white,
               items: const [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.person, color: Colors.white),
+                  icon: Icon(Icons.store, color: Colors.white),
                   label: "Home",
                   backgroundColor: Color.fromARGB(0, 250, 248, 248),
                 ),
@@ -176,7 +176,8 @@ class _Info_TshirtState extends State<Info_Tshirt> {
                                   ),
                                 ),
                                 Padding(
-                                    padding: EdgeInsets.only(top: 30),
+                                    padding: const EdgeInsets.only(
+                                        top: 30, bottom: 30),
                                     child: Container(
                                         decoration: BoxDecoration(
                                             border: Border.all(
@@ -187,8 +188,15 @@ class _Info_TshirtState extends State<Info_Tshirt> {
                                                     Radius.circular(5))),
                                         width: 240,
                                         height: 200,
-                                        child: Image.network(snapshot
-                                            .data!['produtos'][5]['image'])))
+                                        child: Image.network(
+                                            snapshot.data!['produtos'][cod - 1]
+                                                ['image']))),
+                                Text(
+                                  'R\$ ${snapshot.data!['produtos'][cod - 1]['price']}'
+                                      .toUpperCase(),
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 20),
+                                ),
                               ],
                             );
                           }));

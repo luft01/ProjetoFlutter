@@ -224,7 +224,7 @@ class _InfoTesteState extends State<InfoTeste> {
                           height: 20,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 40.0, top: 100),
+                          padding: const EdgeInsets.only(left: 20.0, top: 100),
                           child: Row(
                             children: [
                               Text(
@@ -242,12 +242,12 @@ class _InfoTesteState extends State<InfoTeste> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 70.0),
+                                padding: const EdgeInsets.only(left: 50.0),
                                 child: Container(
-                                    width: 50,
-                                    height: 50,
+                                    width: 45,
+                                    height: 40,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
+                                      borderRadius: BorderRadius.circular(15),
                                       color:
                                           const Color.fromARGB(255, 65, 62, 62),
                                     ),
@@ -268,19 +268,19 @@ class _InfoTesteState extends State<InfoTeste> {
                           ),
                         ),
                         Padding(
-                            padding: const EdgeInsets.only(left: 40.0),
+                            padding: const EdgeInsets.only(left: 20.0),
                             child: Row(
                               children: [
                                 const Text('Tamanhos : ',
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 25)),
+                                        color: Colors.black, fontSize: 20)),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 20.0),
+                                  padding: const EdgeInsets.only(left: 5.0),
                                   child: Container(
-                                      width: 50,
-                                      height: 50,
+                                      width: 35,
+                                      height: 35,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
+                                        borderRadius: BorderRadius.circular(15),
                                         color: testeStatus[0] == true
                                             ? Colors.blue[900]
                                             : const Color.fromARGB(
@@ -291,7 +291,7 @@ class _InfoTesteState extends State<InfoTeste> {
                                               medidas == false ? '39' : '7.5',
                                               style: const TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 15)),
+                                                  fontSize: 13)),
                                           onPressed: () => {
                                                 for (int i = 0; i < 5; i++)
                                                   {
@@ -323,12 +323,12 @@ class _InfoTesteState extends State<InfoTeste> {
                                               })),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
+                                  padding: const EdgeInsets.only(left: 5.0),
                                   child: Container(
-                                      width: 50,
-                                      height: 50,
+                                      width: 35,
+                                      height: 35,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
+                                        borderRadius: BorderRadius.circular(15),
                                         color: testeStatus[1] == true
                                             ? Colors.blue[900]
                                             : const Color.fromARGB(
@@ -339,7 +339,7 @@ class _InfoTesteState extends State<InfoTeste> {
                                               medidas == false ? '40' : '8.5',
                                               style: const TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 15)),
+                                                  fontSize: 13)),
                                           onPressed: () => {
                                                 for (int i = 0; i < 5; i++)
                                                   {
@@ -371,12 +371,12 @@ class _InfoTesteState extends State<InfoTeste> {
                                               })),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
+                                  padding: const EdgeInsets.only(left: 5.0),
                                   child: Container(
-                                      width: 50,
-                                      height: 50,
+                                      width: 35,
+                                      height: 35,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
+                                        borderRadius: BorderRadius.circular(15),
                                         color: testeStatus[2] == true
                                             ? Colors.blue[900]
                                             : const Color.fromARGB(
@@ -387,7 +387,7 @@ class _InfoTesteState extends State<InfoTeste> {
                                               medidas == false ? '41' : '9.5',
                                               style: const TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 15)),
+                                                  fontSize: 13)),
                                           onPressed: () => {
                                                 numbe = 2,
                                                 for (int i = 0; i < 5; i++)
@@ -420,14 +420,14 @@ class _InfoTesteState extends State<InfoTeste> {
                                               })),
                                 ),
                                 Padding(
-                                    padding: const EdgeInsets.only(left: 10.0),
+                                    padding: const EdgeInsets.only(left: 5.0),
                                     child: Column(children: [
                                       Container(
-                                          width: 50,
-                                          height: 50,
+                                          width: 35,
+                                          height: 35,
                                           decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(50),
+                                                BorderRadius.circular(15),
                                             color: testeStatus[3] == true
                                                 ? Colors.blue[900]
                                                 : const Color.fromARGB(
@@ -440,7 +440,7 @@ class _InfoTesteState extends State<InfoTeste> {
                                                       : '10',
                                                   style: const TextStyle(
                                                       color: Colors.white,
-                                                      fontSize: 15)),
+                                                      fontSize: 13)),
                                               onPressed: () => {
                                                     for (int i = 0; i < 5; i++)
                                                       {
@@ -476,10 +476,10 @@ class _InfoTesteState extends State<InfoTeste> {
                                                   })),
                                     ])),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
+                                  padding: const EdgeInsets.only(left: 5.0),
                                   child: Container(
-                                      width: 50,
-                                      height: 50,
+                                      width: 35,
+                                      height: 35,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(50),
                                         color: testeStatus[4] == true
@@ -492,7 +492,7 @@ class _InfoTesteState extends State<InfoTeste> {
                                               medidas == false ? '43' : '10.5',
                                               style: const TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 15)),
+                                                  fontSize: 13)),
                                           onPressed: () => {
                                                 for (int i = 0; i < 5; i++)
                                                   {

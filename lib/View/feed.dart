@@ -65,6 +65,26 @@ class _FeedState extends State<Feed> {
                 children: [
                   TextButton(
                     onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FotosPage(),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.white,
+                      ),
+                      child: const Icon(Icons.camera_alt, color: Colors.black),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
                       context.read<AuthService>().logout();
                       Navigator.of(context).pushNamed('/login');
                     },
@@ -187,21 +207,6 @@ class _FeedState extends State<Feed> {
                         onPressed: () => _setText(),
                         child: const Text('Atualizar'),
                       ),
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                Colors.blue[900], // Background color
-                          ),
-                          onPressed: () => {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => FotosPage(),
-                                    fullscreenDialog: true,
-                                  ),
-                                ),
-                              },
-                          child: const Text('Foto')),
                     ])
                   ])),
             ),

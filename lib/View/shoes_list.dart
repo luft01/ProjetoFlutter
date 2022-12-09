@@ -113,8 +113,8 @@ class _ShoesListState extends State<ShoesList> {
                     padding:
                         const EdgeInsets.only(left: 35, bottom: 30, top: 10),
                     child: Container(
-                      width: 165,
-                      height: 172,
+                      width: 155,
+                      height: 162,
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 104, 101, 101)
                               .withOpacity(0.2),
@@ -124,8 +124,8 @@ class _ShoesListState extends State<ShoesList> {
                               const BorderRadius.all(Radius.circular(10))),
                       child: Column(children: [
                         SizedBox(
-                          width: 163,
-                          height: 170,
+                          width: 153,
+                          height: 160,
                           child: RotationTransition(
                             turns: const AlwaysStoppedAnimation(20 / 360),
                             child: ClipRRect(
@@ -144,13 +144,13 @@ class _ShoesListState extends State<ShoesList> {
                           children: [
                             const Text('NIKE SPORT',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 22)),
+                                    color: Colors.black, fontSize: 17)),
                             const Text('R\$ 299.00',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 22)),
+                                    color: Colors.black, fontSize: 17)),
                             Container(
-                              width: 120,
-                              height: 50,
+                              width: 95,
+                              height: 40,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: Colors.blue[900]),
@@ -176,10 +176,10 @@ class _ShoesListState extends State<ShoesList> {
                                     size: 19.0,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 4),
+                                    padding: EdgeInsets.only(left: 2),
                                     child: Text('More Info',
                                         style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 12,
                                         )),
                                   )
                                 ]),
@@ -193,8 +193,8 @@ class _ShoesListState extends State<ShoesList> {
                     padding:
                         const EdgeInsets.only(left: 35, bottom: 30, top: 10),
                     child: Container(
-                      width: 165,
-                      height: 172,
+                      width: 155,
+                      height: 162,
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 104, 101, 101)
                               .withOpacity(0.2),
@@ -204,8 +204,8 @@ class _ShoesListState extends State<ShoesList> {
                               const BorderRadius.all(Radius.circular(10))),
                       child: Column(children: [
                         SizedBox(
-                          width: 163,
-                          height: 170,
+                          width: 153,
+                          height: 160,
                           child: RotationTransition(
                             turns: const AlwaysStoppedAnimation(20 / 360),
                             child: ClipRRect(
@@ -224,13 +224,13 @@ class _ShoesListState extends State<ShoesList> {
                           children: [
                             const Text('  NIKE  AIR1  ',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 22)),
+                                    color: Colors.black, fontSize: 17)),
                             const Text('R\$ 299.00',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 22)),
+                                    color: Colors.black, fontSize: 17)),
                             Container(
-                              width: 120,
-                              height: 50,
+                              width: 95,
+                              height: 40,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: Colors.blue[900]),
@@ -250,10 +250,10 @@ class _ShoesListState extends State<ShoesList> {
                                     size: 19.0,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 4),
+                                    padding: EdgeInsets.only(left: 2),
                                     child: Text('More Info',
                                         style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 12,
                                         )),
                                   )
                                 ]),
@@ -267,8 +267,8 @@ class _ShoesListState extends State<ShoesList> {
                     padding:
                         const EdgeInsets.only(left: 35, bottom: 30, top: 10),
                     child: Container(
-                      width: 165,
-                      height: 172,
+                      width: 155,
+                      height: 162,
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 104, 101, 101)
                               .withOpacity(0.2),
@@ -278,8 +278,8 @@ class _ShoesListState extends State<ShoesList> {
                               const BorderRadius.all(Radius.circular(10))),
                       child: Column(children: [
                         SizedBox(
-                          width: 163,
-                          height: 170,
+                          width: 153,
+                          height: 160,
                           child: RotationTransition(
                             turns: const AlwaysStoppedAnimation(20 / 360),
                             child: ClipRRect(
@@ -298,13 +298,13 @@ class _ShoesListState extends State<ShoesList> {
                           children: [
                             const Text('ADIDAS HEAVY',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 22)),
+                                    color: Colors.black, fontSize: 17)),
                             const Text('R\$ 179.00',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 22)),
+                                    color: Colors.black, fontSize: 17)),
                             Container(
-                              width: 120,
-                              height: 50,
+                              width: 95,
+                              height: 40,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: Colors.blue[900]),
@@ -325,10 +325,10 @@ class _ShoesListState extends State<ShoesList> {
                                     size: 19.0,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 4),
+                                    padding: EdgeInsets.only(left: 2),
                                     child: Text('More Info',
                                         style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 12,
                                         )),
                                   )
                                 ]),
@@ -342,8 +342,8 @@ class _ShoesListState extends State<ShoesList> {
                     padding:
                         const EdgeInsets.only(left: 35, bottom: 30, top: 10),
                     child: Container(
-                      width: 165,
-                      height: 172,
+                      width: 155,
+                      height: 162,
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 104, 101, 101)
                               .withOpacity(0.2),
@@ -353,8 +353,8 @@ class _ShoesListState extends State<ShoesList> {
                               const BorderRadius.all(Radius.circular(10))),
                       child: Column(children: [
                         SizedBox(
-                          width: 163,
-                          height: 170,
+                          width: 153,
+                          height: 160,
                           child: RotationTransition(
                             turns: const AlwaysStoppedAnimation(20 / 360),
                             child: ClipRRect(
@@ -373,13 +373,13 @@ class _ShoesListState extends State<ShoesList> {
                           children: [
                             const Text('ADIDAS BASIC',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 22)),
+                                    color: Colors.black, fontSize: 17)),
                             const Text('R\$ 229.00',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 22)),
+                                    color: Colors.black, fontSize: 17)),
                             Container(
-                              width: 120,
-                              height: 50,
+                              width: 95,
+                              height: 40,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: Colors.blue[900]),
@@ -400,10 +400,10 @@ class _ShoesListState extends State<ShoesList> {
                                     size: 19.0,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 4),
+                                    padding: EdgeInsets.only(left: 2),
                                     child: Text('More Info',
                                         style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 12,
                                         )),
                                   )
                                 ]),
@@ -417,8 +417,8 @@ class _ShoesListState extends State<ShoesList> {
                     padding:
                         const EdgeInsets.only(left: 35, bottom: 30, top: 10),
                     child: Container(
-                      width: 165,
-                      height: 172,
+                      width: 155,
+                      height: 162,
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 104, 101, 101)
                               .withOpacity(0.2),
@@ -428,8 +428,8 @@ class _ShoesListState extends State<ShoesList> {
                               const BorderRadius.all(Radius.circular(10))),
                       child: Column(children: [
                         SizedBox(
-                          width: 163,
-                          height: 170,
+                          width: 153,
+                          height: 160,
                           child: RotationTransition(
                             turns: const AlwaysStoppedAnimation(20 / 360),
                             child: ClipRRect(
@@ -447,13 +447,13 @@ class _ShoesListState extends State<ShoesList> {
                           children: [
                             Text('${mapteste[1]![0]} ',
                                 style: const TextStyle(
-                                    color: Colors.black, fontSize: 22)),
+                                    color: Colors.black, fontSize: 17)),
                             Text('R\$ ${mapteste[1]![1]}',
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 22)),
+                                    color: Colors.black, fontSize: 17)),
                             Container(
-                              width: 120,
-                              height: 50,
+                              width: 95,
+                              height: 40,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: Colors.blue[900]),
@@ -479,10 +479,10 @@ class _ShoesListState extends State<ShoesList> {
                                     size: 19.0,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 4),
+                                    padding: EdgeInsets.only(left: 2),
                                     child: Text('More Info',
                                         style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 12,
                                         )),
                                   )
                                 ]),

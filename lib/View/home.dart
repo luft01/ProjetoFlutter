@@ -75,9 +75,14 @@ class _CarouselState extends State<Carousel> {
               currentIndex: 1,
               items: const [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.shop, color: Colors.white),
-                  label: "Products",
+                  icon: Icon(Icons.run_circle_outlined, color: Colors.white),
+                  label: "Shoes",
                   backgroundColor: Color.fromARGB(0, 255, 255, 255),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.shopify_outlined, color: Colors.white),
+                  backgroundColor: Colors.transparent,
+                  label: "Tshirt",
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.shopping_cart, color: Colors.white),
@@ -96,6 +101,9 @@ class _CarouselState extends State<Carousel> {
                     Navigator.of(context).pushNamed('/shoes');
                     break;
                   case 1:
+                    Navigator.of(context).pushNamed('/promo');
+                    break;
+                  case 2:
                     Navigator.of(context).pushNamed('/cart');
                     break;
                   case 2:
@@ -185,7 +193,7 @@ class _CarouselState extends State<Carousel> {
                             borderRadius: BorderRadius.circular(15),
                             color: Colors.black.withOpacity(0.2),
                           ),
-                          width: 170,
+                          width: 150,
                           height: 140,
                           /* alignment: Alignment.topLeft, */
                           child: Padding(
@@ -209,7 +217,7 @@ class _CarouselState extends State<Carousel> {
                                 borderRadius: BorderRadius.circular(15),
                                 color: Colors.black.withOpacity(0.3),
                               ),
-                              width: 170,
+                              width: 150,
                               height: 140,
                               /* alignment: Alignment.topLeft, */
                               child: Padding(
@@ -237,7 +245,7 @@ class _CarouselState extends State<Carousel> {
                                     borderRadius: BorderRadius.circular(15),
                                     color: Colors.black.withOpacity(0.2),
                                   ),
-                                  width: 170,
+                                  width: 150,
                                   height: 140,
                                   /* alignment: Alignment.topLeft, */
                                   child: Padding(
@@ -272,7 +280,7 @@ class _CarouselState extends State<Carousel> {
                                               BorderRadius.circular(15),
                                           color: Colors.black.withOpacity(0.3),
                                         ),
-                                        width: 170,
+                                        width: 150,
                                         height: 140,
                                         /* alignment: Alignment.topLeft, */
                                         child: Padding(
